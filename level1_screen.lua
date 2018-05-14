@@ -43,10 +43,18 @@ local tomato
 -----------------------------------------------------------------------------------------
 
 function ResumeGame()
+
 end
 
+--checking to see if the user pressed the right answer and bring them back to level 1
+local function TouchListenerResume(touch)
+    
+    if (touch.phase == "ended") then
 
-
+        BackToLevel1( )
+    
+    end 
+end
 
 -- Creating Transition to help Screen
 local function OptionScreen( )
