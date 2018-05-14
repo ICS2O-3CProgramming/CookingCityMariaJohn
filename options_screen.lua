@@ -1,9 +1,11 @@
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
--- Created by: Maria T
--- Date: Month Day, Year
--- Description: This is the level 1 screen of the game.
+-- Created by: Allison
+-- Date: May 16, 2017
+-- Description: This is the level 1 screen of the game. the charater can be dragged to move
+--If character goes off a certain araea they go back to the start. When a user interactes
+--with piant a trivia question will come up. they will have a limided time to click on the answer
 -----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
@@ -13,11 +15,13 @@
 -- Use Composer Libraries
 local composer = require( "composer" )
 local widget = require( "widget" )
+local physics = require( "physics")
+
 
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "level1_screen"
+sceneName = "options_screen"
 
 -----------------------------------------------------------------------------------------
 
@@ -29,117 +33,113 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
 
 -- The local variables for this scene
-local bkg_image
-local pizzadough
-local carrot    
-local cheese
-local chocolate
-local peperonibag
-local saucepacket
-local strawberry
-local tomato
+local optionsText
+local resumeText
+local mainmenuText
+
+local bkg
+local cover
+
+
+local userAnswer
+local textTouched = false
+
+-----------------------------------------------------------------------------------------
+--LOCAL FUNCTIONS
+-----------------------------------------------------------------------------------------
+
+--making transition to next scene
+local function BackToLevel1() 
+    composer.hideOverlay("crossFade", 400 )
+  
+    ResumeGame()
+end 
+
+local function GoToMainMenu() 
+    composer.hideOverlay("crossFade", 400 )
+  
+    composer.gotoScene( "main_menu", {effect = "fromBottom", time = 500})
+end 
+
+
+-----------------------------------------------------------------------------------------
+--checking to see if the user pressed the right answer and bring them back to level 1
+local function TouchListenerResume(touch)
+    
+    if (touch.phase == "ended") then
+
+        BackToLevel1( )
+    
+    end 
+end
+
+
+--checking to see if the user pressed the right answer and bring them back to level 1
+local function TouchListenerMainMenu(touch)
+    
+    if (touch.phase == "ended") then
+
+        GoToMainMenu()
+        
+    end 
+end
+
+
+--adding the event listeners 
+local function AddTextListeners ( )
+    resumeText:addEventListener( "touch", TouchListenerResume )
+    mainmenuText:addEventListener( "touch", TouchListenerMainMenu)
+end
+
+--removing the event listeners
+local function RemoveTextListeners()
+    resumeText:removeEventListener( "touch", TouchListenerResume )
+    mainmenuText:removeEventListener( "touch", TouchListenerMainMenu)
+end
+
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
 
-function ResumeGame()
-end
-
-
-
-
--- Creating Transition to help Screen
-local function OptionScreen( )
-    -- show overlay with math question
-    composer.showOverlay( "options_screen", { isModal = true, effect = "fade", time = 100})
-end  
 -- The function called when the screen doesn't exist
 function scene:create( event )
 
     -- Creating a group that associates objects with the scene
-    local sceneGroup = self.view
+    local sceneGroup = self.view  
 
     -----------------------------------------------------------------------------------------
+    --covering the other scene with a rectangle so it looks faded and stops touch from going through
+    bkg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+    --setting to a semi black colour
+    bkg:setFillColor(0,0,0,0.5)
 
-    -- Insert the image
-    bkg_image = display.newImageRect("Images/level1.png", display.contentWidth, display.contentHeight)
-    bkg_image.x = display.contentCenterX
-    bkg_image.y = display.contentCenterY
-    bkg_image.width = display.contentWidth
-    bkg_image.height = display.contentHeight
+    -----------------------------------------------------------------------------------------
+    --making a cover rectangle to have the background fully bolcked where the question is
+    cover = display.newRoundedRect(display.contentCenterX, display.contentCenterY, display.contentWidth*0.8, display.contentHeight*0.95, 50 )
+    --setting its colour
+    cover:setFillColor(134/255, 239/255, 255/255)
 
-    -- Insert the image
-    pizzadough = display.newImageRect("L1images/pizzadough.png", 350, 350 )
-    pizzadough.x = display.contentCenterX
-    pizzadough.y = display.contentCenterY
+    -- create the question text object
+    optionsText = display.newText("Options", display.contentCenterX, display.contentCenterY*3/8, Arial, 100) 
+	optionsText:setTextColor(0, 0, 0 )
     
-    -- Insert the image
-    carrot = display.newImageRect("L1images/carrot.png", 200, 88 )
-    carrot.x = display.contentCenterX*.7
-    carrot.y = display.contentCenterY/2*3.3
+    -- create the question text object
+    resumeText = display.newText("Resume", display.contentCenterX, display.contentCenterY*2/2.5, Arial, 50)
+	resumeText:setTextColor(0, 0, 0 )
     
-    -- Insert the image
-    cheese = display.newImageRect("L1images/Cheese.png", 100, 100 )
-    cheese.x = display.contentCenterX*1.6
-    cheese.y = display.contentCenterY/2*3.72
-    
-    -- Insert the image
-    chocolate = display.newImageRect("L1images/Chocolate.png", 180, 68 )
-    chocolate.x = display.contentCenterX*1.3
-    chocolate.y = display.contentCenterY/2*3.3
-    
-    -- Insert the image
-    peperonibag = display.newImageRect("L1images/peperonibag.png", 100, 100 )
-    peperonibag.x = display.contentCenterX*.445
-    peperonibag.y = display.contentCenterY/2*3.72
-    
-    -- Insert the image
-    saucepacket = display.newImageRect("L1images/SaucePacket.png", 100, 100 )
-    saucepacket.x = display.contentCenterX
-    saucepacket.y = display.contentCenterY/2*3.72
-    
-    -- Insert the image
-    strawberry = display.newImageRect("L1images/Strawberry.png", 100, 100 )
-    strawberry.x = display.contentCenterX*.7
-    strawberry.y = display.contentCenterY/2*3.72
-    
-    -- Insert the  image
-    tomato = display.newImageRect("L1images/tomato.png", 100, 100 )
-    tomato.x = display.contentCenterX*1.3
-    tomato.y = display.contentCenterY/2*3.72
-    
-    -- Creating help Button
-    Pause = widget.newButton( 
-        {   
-            -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*1.87,
-            y = display.contentCenterY/6.5,
-
-            -- Insert the images here
-            defaultFile = "L1images/PauseButtonUnpressed.png",
-            overFile = "L1images/PauseButtonPressed.png",
+    -- create the question text object
+    mainmenuText = display.newText("Main Menu", display.contentCenterX, display.contentCenterY*3/2.5, Arial, 50)
+	mainmenuText:setTextColor(0, 0, 0 )
 
 
 
-            -- When the button is released, call the Level1 screen transition function
-            onRelease = OptionScreen          
-        } )
+    -- insert all objects for this scene into the scene group
+    sceneGroup:insert(bkg)
+    sceneGroup:insert(cover)
+    sceneGroup:insert(optionsText)
+    sceneGroup:insert(resumeText)
+    sceneGroup:insert(mainmenuText)
 
-    
-    -- Send the background image to the back layer so all other objects can be on top
-    bkg_image:toBack()
-
-        -- Insert background image into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( bkg_image )
-    sceneGroup:insert( pizzadough )
-    sceneGroup:insert( strawberry )   
-    sceneGroup:insert( saucepacket )
-    sceneGroup:insert( chocolate )
-    sceneGroup:insert( carrot )
-    sceneGroup:insert( peperonibag )
-    sceneGroup:insert( cheese )
-    sceneGroup:insert( tomato )
-    sceneGroup:insert( Pause ) 
 
 end --function scene:create( event )
 
@@ -160,11 +160,11 @@ function scene:show( event )
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
-
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-
+        
+        AddTextListeners()
     end
 
 end --function scene:show( event )
@@ -184,11 +184,12 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
-
+        --parent:resumeGame()
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+        RemoveTextListeners()
     end
 
 end --function scene:hide( event )
@@ -203,7 +204,7 @@ function scene:destroy( event )
 
     -----------------------------------------------------------------------------------------
 
-    -- Called prior to the removal of scene's view ("sceneGroup").
+    -- Called prior to the removal of scene's view ("sceneGroup"). 
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.
 
@@ -218,6 +219,8 @@ scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
+
+
 
 -----------------------------------------------------------------------------------------
 
