@@ -45,6 +45,13 @@ local peperonislices
 local level1text
 local lives = 3
 local questionsAnswered = 0
+local correctObject1
+local correctObject2
+local correctObject3
+
+local incorrectObject1
+local incorrectObject2
+local incorrectObject3
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -53,6 +60,20 @@ local questionsAnswered = 0
 function ResumeGame()
 
 end
+
+local function HideCorrect()
+    correctObject1.isVisible = false
+    correctObject2.isVisible = false
+    correctObject3.isVisible = false
+end
+
+
+local function HideIncorrect()
+    incorrectObject1.isVisible = false
+    incorrectObject2.isVisible = false
+    incorrectObject3.isVisible = false
+end
+
 
 local function YouLoseTransition()
     composer.gotoScene( "you_lose" )
@@ -91,9 +112,13 @@ local function SaucePacketButton()
         -- make the sauce visible over top of the pizza
         sauce.isVisible = true
 
+        correctObject1.isVisible = true
+        timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         questionsAnswered = questionsAnswered  + 1 
     else
+        incorrectObject1.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
         lives = lives - 1
         
         if (lives == 0) then
@@ -112,9 +137,13 @@ local function CheeseButton()
         -- make the sauce visible over top of the pizza
         shreddedcheese.isVisible = true
 
+        correctObject2.isVisible = true
+        timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         questionsAnswered = questionsAnswered  + 1 
     else
+        incorrectObject1.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
         lives = lives - 1
         
         if (lives == 0) then
@@ -133,9 +162,14 @@ local function PeperoniButton()
         -- make the sauce visible over top of the pizza
         peperonislices.isVisible = true
 
+        correctObject3.isVisible = true
+        timer.performWithDelay(1000, HideCorrect)
+
         -- adding to the score
         questionsAnswered = questionsAnswered  + 1 
     else
+        incorrectObject3.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
         lives = lives - 1
         
         if (lives == 0) then
@@ -146,6 +180,8 @@ end
 
 -- Creating Transition to help Screen
 local function CarrotButton()
+    incorrectObject2.isVisible = true
+    timer.performWithDelay(1000, HideIncorrect)
     -- show overlay with math question
     lives = lives - 1
     
@@ -157,6 +193,9 @@ end
 
 -- Creating Transition to help Screen
 local function StrawberryButton()
+
+    incorrectObject3.isVisible = true
+    timer.performWithDelay(1000, HideIncorrect)
     -- show overlay with math question
     lives = lives - 1
     
@@ -167,6 +206,8 @@ local function StrawberryButton()
 end
 -- Creating Transition to help Screen
 local function ChocolateButton()
+    incorrectObject2.isVisible = true
+    timer.performWithDelay(1500, HideIncorrect)
 
     lives = lives - 1    
     
@@ -179,7 +220,9 @@ end
 
 -- Creating Transition to help Screen
 local function TomatoButton()
-    -- show overlay with math question
+
+    incorrectObject1.isVisible = true
+    timer.performWithDelay(1000, HideIncorrect)
     lives = lives - 1
     
     if (lives == 0) then
@@ -226,27 +269,6 @@ function scene:create( event )
     peperonislices.y = display.contentCenterY/1.2
     peperonislices.isVisible = false
     
-    -- Insert the image
-    carrot = display.newImageRect("L1images/carrot.png", 200, 88 )
-    carrot.x = display.contentCenterX*.6
-    carrot.y = display.contentCenterY/2*3.3
-    
-    
-    -- Insert the image
-    chocolate = display.newImageRect("L1images/Chocolate.png", 180, 68 )
-    chocolate.x = display.contentCenterX*1.5
-    chocolate.y = display.contentCenterY/2*3.3
-    
-    
-    -- Insert the image
-    strawberry = display.newImageRect("L1images/Strawberry.png", 100, 100 )
-    strawberry.x = display.contentCenterX*.445
-    strawberry.y = display.contentCenterY/2*3.72
-    
-    -- Insert the  image
-    tomato = display.newImageRect("L1images/tomato.png", 100, 100 )
-    tomato.x = display.contentCenterX*1.3
-    tomato.y = display.contentCenterY/2*3.72
 
     level1text = display.newImageRect("L1images/level1text.png", 450, 195)
     
@@ -254,11 +276,76 @@ function scene:create( event )
     level1text.x = 500
     level1text.y = display.contentCenterY/6
 
+    --Create the correct text object and make it invisible
+    correctObject1 = display.newText( "You're pretty good!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    correctObject1:setTextColor(0/255, 150/255, 255/255)
+    correctObject1.isVisible = false
+
+    --Create the correct text object and make it invisible
+    correctObject2 = display.newText( "Amazing", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    correctObject2:setTextColor(0/255, 150/255, 255/255)
+    correctObject2.isVisible = false
+
+    --Create the correct text object and make it invisible
+    correctObject3 = display.newText( "Almost Done!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    correctObject3:setTextColor(0/255, 150/255, 255/255)
+    correctObject3.isVisible = false
+
+    --Create the correct text object and make it invisible
+    incorrectObject1 = display.newText( "You'll get it next time", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    incorrectObject1:setTextColor(255/255, 150/255, 0/255)
+    incorrectObject1.isVisible = false
+
+    incorrectObject2 = display.newText( "That's not even close", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    incorrectObject2:setTextColor(255/255, 150/255, 0/255)
+    incorrectObject2.isVisible = false
+
+    incorrectObject3 = display.newText( "Thats not right!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    incorrectObject3:setTextColor(255/255, 150/255, 0/255)
+    incorrectObject3.isVisible = false
+
+
+
+    -- Creating pause Button
+    carrot = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.6,
+            y = display.contentCenterY/2*3.3,
+
+            -- Insert the images here
+            defaultFile = "L1images/carrot.png",
+            overFile = "L1images/carrot.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = StrawberryButton          
+        } )
+
+    -- Creating pause Button
+    chocolate = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*1.5,
+            y = display.contentCenterY/2*3.3,
+
+            -- Insert the images here
+            defaultFile = "L1images/Chocolate.png",
+            overFile = "L1images/Chocolate.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = ChocolateButton          
+        } )
+
+
     -- Creating pause Button
     strawberry = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*1.3,
+            x = display.contentCenterX*.445,
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
