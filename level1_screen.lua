@@ -41,6 +41,8 @@ local tomato
 local sauce
 local shreddedcheese
 local peperonislices
+local pizza 
+local goal
 -- text for level1
 local level1text
 local lives = 3
@@ -52,6 +54,11 @@ local correctObject3
 local incorrectObject1
 local incorrectObject2
 local incorrectObject3
+local incorrectObject4
+
+local hat1
+local hat2
+local hat3
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -72,6 +79,7 @@ local function HideIncorrect()
     incorrectObject1.isVisible = false
     incorrectObject2.isVisible = false
     incorrectObject3.isVisible = false
+    incorrectObject4.isVisible = false
 end
 
 
@@ -103,6 +111,47 @@ local function HowToScreen( )
 end 
 
 -- Creating Transition to help Screen
+local function CookButton()
+    -- show overlay with math question
+    if (questionsAnswered == 3) then
+
+        pizza.isVisible = true
+        -- make the sauce visible over top of the pizza
+        sauce.isVisible = false
+        shreddedcheese.isVisible = false
+        peperonislices.isVisible = false
+        pizzadough.isVisible = false
+
+        correctObject1.isVisible = true
+        timer.performWithDelay(1000, HideCorrect)
+        -- adding to the score
+        questionsAnswered = questionsAnswered  + 1 
+    else
+        incorrectObject4.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
+        
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+    end
+end
+
+-- Creating Transition to help Screen
 local function SaucePacketButton()
     -- show overlay with math question
     if (questionsAnswered == 0) then
@@ -121,11 +170,28 @@ local function SaucePacketButton()
         timer.performWithDelay(1000, HideIncorrect)
         lives = lives - 1
         
-        if (lives == 0) then
-            timer.performWithDelay(200, YouLoseTransition)
-        end
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
     end
-end 
+    end
+end
+
+
 
 -- Creating Transition to help Screen
 local function CheeseButton()
@@ -146,9 +212,24 @@ local function CheeseButton()
         timer.performWithDelay(1000, HideIncorrect)
         lives = lives - 1
         
-        if (lives == 0) then
-            timer.performWithDelay(200, YouLoseTransition)
-        end
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
     end
 end
 
@@ -172,9 +253,24 @@ local function PeperoniButton()
         timer.performWithDelay(1000, HideIncorrect)
         lives = lives - 1
         
-        if (lives == 0) then
-            timer.performWithDelay(200, YouLoseTransition)
-        end
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
     end
 end
 
@@ -185,8 +281,22 @@ local function CarrotButton()
     -- show overlay with math question
     lives = lives - 1
     
-    if (lives == 0) then
-    
+   if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
         timer.performWithDelay(200, YouLoseTransition)
     end
 end
@@ -199,8 +309,22 @@ local function StrawberryButton()
     -- show overlay with math question
     lives = lives - 1
     
-    if (lives == 0) then
-    
+    if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
         timer.performWithDelay(200, YouLoseTransition)
     end
 end
@@ -211,10 +335,23 @@ local function ChocolateButton()
 
     lives = lives - 1    
     
-    if (lives == 0) then
-    
-     timer.performWithDelay(200, YouLoseTransition)
-    
+    if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
     end
 end
 
@@ -225,8 +362,22 @@ local function TomatoButton()
     timer.performWithDelay(1000, HideIncorrect)
     lives = lives - 1
     
-    if (lives == 0) then
-    
+    if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
         timer.performWithDelay(200, YouLoseTransition)
     end
 end
@@ -250,6 +401,19 @@ function scene:create( event )
     pizzadough = display.newImageRect("L1images/pizzadough.png", 350, 350 )
     pizzadough.x = display.contentCenterX
     pizzadough.y = display.contentCenterY/1.2
+
+    -- Insert the image
+    pizza = display.newImageRect("L1images/pizza.png", 350, 350 )
+    pizza.x = display.contentCenterX
+    pizza.y = display.contentCenterY/1.2
+    pizza.isVisible = false
+
+    -- Insert the image
+    goal = display.newImageRect("L1images/pizza.png", 350, 350 )
+    goal.x = display.contentWidth - 965
+    goal.y = display.contentCenterY/1.8
+    goal:scale (0.3, 0.3)
+    
 
     -- Insert the image
     sauce = display.newImageRect("L1images/Sauce@2x.png", 350, 350 )
@@ -277,7 +441,7 @@ function scene:create( event )
     level1text.y = display.contentCenterY/6
 
     --Create the correct text object and make it invisible
-    correctObject1 = display.newText( "You're pretty good!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    correctObject1 = display.newText( "That's good!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
     correctObject1:setTextColor(0/255, 150/255, 255/255)
     correctObject1.isVisible = false
 
@@ -293,17 +457,33 @@ function scene:create( event )
 
     --Create the correct text object and make it invisible
     incorrectObject1 = display.newText( "You'll get it next time", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
-    incorrectObject1:setTextColor(255/255, 150/255, 0/255)
+    incorrectObject1:setTextColor(255/255, 255/255, 0/255)
     incorrectObject1.isVisible = false
 
     incorrectObject2 = display.newText( "That's not even close", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
-    incorrectObject2:setTextColor(255/255, 150/255, 0/255)
+    incorrectObject2:setTextColor(255/255, 255/255, 0/255)
     incorrectObject2.isVisible = false
 
     incorrectObject3 = display.newText( "Thats not right!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
-    incorrectObject3:setTextColor(255/255, 150/255, 0/255)
+    incorrectObject3:setTextColor(255/255, 255/255, 0/255)
     incorrectObject3.isVisible = false
 
+    incorrectObject4 = display.newText( "It's not ready!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    incorrectObject4:setTextColor(255/255, 255/255, 0/255)
+    incorrectObject4.isVisible = false
+
+    hat3 = display.newImageRect("L1images/Hat.png", 100, 100)
+    hat3.x = display.contentWidth*0.22
+    hat3.y = display.contentHeight *0.37
+
+
+    hat2 = display.newImageRect("L1images/Hat.png", 100, 100)
+    hat2.x = display.contentWidth*0.22
+    hat2.y = display.contentHeight *0.23
+
+    hat1 = display.newImageRect("L1images/Hat.png", 100, 100)
+    hat1.x = display.contentWidth*0.22
+    hat1.y = display.contentHeight *0.1
 
 
     -- Creating pause Button
@@ -410,6 +590,23 @@ function scene:create( event )
         } )
 
     -- Creating pause Button
+    cook = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.17,
+            y = display.contentHeight-35,
+
+            -- Insert the images here
+            defaultFile = "L1images/cookbutton.png",
+            overFile = "L1images/cookbuttonpressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = CookButton          
+        } )
+
+    -- Creating pause Button
     saucepacket = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
@@ -468,6 +665,7 @@ function scene:create( event )
         -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image )
     sceneGroup:insert( pizzadough )
+    sceneGroup:insert( pizza )
     sceneGroup:insert( strawberry )   
     sceneGroup:insert( saucepacket )
     sceneGroup:insert( chocolate )
@@ -481,6 +679,11 @@ function scene:create( event )
     sceneGroup:insert( sauce )
     sceneGroup:insert( shreddedcheese )
     sceneGroup:insert( peperonislices )
+    sceneGroup:insert( cook )
+    sceneGroup:insert( goal )
+    sceneGroup:insert( hat1 )
+    sceneGroup:insert( hat2 )
+    sceneGroup:insert( hat3 )
 
 end --function scene:create( event )
 
