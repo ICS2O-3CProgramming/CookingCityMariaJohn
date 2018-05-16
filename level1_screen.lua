@@ -38,9 +38,14 @@ local peperonibag
 local saucepacket
 local strawberry
 local tomato
+local sauce
+local shreddedcheese
+-- text for level1
+local level1text
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
+
 
 function ResumeGame()
 
@@ -60,7 +65,16 @@ end
 local function OptionScreen( )
     -- show overlay with math question
     composer.showOverlay( "options_screen", { isModal = true, effect = "fade", time = 100})
-end  
+end 
+
+-- Creating Transition to help Screen
+local function HowToScreen( )
+    -- show overlay with math question
+    composer.showOverlay( "howto_screen", { isModal = true, effect = "fade", time = 100})
+end 
+
+-- idea was the widget thing like the back button 
+
 -- The function called when the screen doesn't exist
 function scene:create( event )
 
@@ -79,7 +93,7 @@ function scene:create( event )
     -- Insert the image
     pizzadough = display.newImageRect("L1images/pizzadough.png", 350, 350 )
     pizzadough.x = display.contentCenterX
-    pizzadough.y = display.contentCenterY
+    pizzadough.y = display.contentCenterY/1.2
     
     -- Insert the image
     carrot = display.newImageRect("L1images/carrot.png", 200, 88 )
@@ -115,8 +129,14 @@ function scene:create( event )
     tomato = display.newImageRect("L1images/tomato.png", 100, 100 )
     tomato.x = display.contentCenterX*1.3
     tomato.y = display.contentCenterY/2*3.72
+
+    level1text = display.newImageRect("L1images/level1text.png", 450, 195)
     
-    -- Creating help Button
+    --set the initial x and y position of the text
+    level1text.x = 500
+    level1text.y = display.contentCenterY/6
+    
+    -- Creating pause Button
     Pause = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
@@ -133,7 +153,25 @@ function scene:create( event )
             onRelease = OptionScreen          
         } )
 
+    -- Creating pause Button
+    HowTo = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*1.95,
+            y = display.contentCenterY,
+
+            -- Insert the images here
+            defaultFile = "L1images/Howtobutton.png",
+            overFile = "L1images/Howtobuttonpressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = HowToScreen          
+        } )
+
     
+
     -- Send the background image to the back layer so all other objects can be on top
     bkg_image:toBack()
 
@@ -147,7 +185,9 @@ function scene:create( event )
     sceneGroup:insert( peperonibag )
     sceneGroup:insert( cheese )
     sceneGroup:insert( tomato )
-    sceneGroup:insert( Pause ) 
+    sceneGroup:insert( Pause )
+    sceneGroup:insert( level1text ) 
+    sceneGroup:insert( HowTo )
 
 end --function scene:create( event )
 
@@ -173,6 +213,14 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
+        local function MoveLevel1Text(event)
+
+            -- change the transparency of the text so that it fades out
+            level1text.alpha = level1text.alpha - 0.0005
+        end
+
+        -- MoveLevel1Text will be called over and over again
+        Runtime:addEventListener("enterFrame", MoveLevel1Text)
     end
 
 end --function scene:show( event )
@@ -197,6 +245,7 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+
     end
 
 end --function scene:hide( event )
