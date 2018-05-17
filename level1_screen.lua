@@ -685,6 +685,14 @@ function scene:create( event )
     sceneGroup:insert( hat2 )
     sceneGroup:insert( hat3 )
 
+    sceneGroup:insert( correctObject1 )
+    sceneGroup:insert( correctObject2 )
+    sceneGroup:insert( correctObject3 )
+    sceneGroup:insert( incorrectObject1 )
+    sceneGroup:insert( incorrectObject2 )
+    sceneGroup:insert( incorrectObject3 )
+    sceneGroup:insert( incorrectObject4 )
+
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
