@@ -44,25 +44,19 @@ local answerText
 local wrongAnswerText1
 local wrongAnswerText2
 
-local answerText2
-local wrongAnswerText3
-local wrongAnswerText4
-
-
 local answerPosition = 1
 local bkg
 local cover
-
-local X1 = display.contentWidth*2/7
-local X2 = display.contentWidth*4/7
-local Y1 = display.contentHeight*1/2
-local Y2 = display.contentHeight*5.5/7
 
 local userAnswer
 local textTouched = false
 
 local randomnumber
 
+local Y1 = display.contentWidth*5/7
+local X2 =  display.contentHeight*5.5/7
+local X1 = display.contentWidth*2/7
+local Y2 = display.contentHeight*5/8
 -----------------------------------------------------------------------------------------
 --LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -77,18 +71,20 @@ end
 -----------------------------------------------------------------------------------------
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerAnswer(touch)
-    userAnswer = answerText.text
+    userAnswer = answerText
     
     if (touch.phase == "ended") then
+
 
         BackToLevel1( )
     
     end 
 end
 
+
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer(touch)
-    userAnswer = wrongText1.text
+    userAnswer = wrongText1
     
     if (touch.phase == "ended") then
         
@@ -100,7 +96,7 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer2(touch)
-    userAnswer = wrongText2.text
+    userAnswer = wrongText2
     
     if (touch.phase == "ended") then
 
@@ -108,29 +104,6 @@ local function TouchListenerWrongAnswer2(touch)
         
     end 
 end
-
---checking to see if the user pressed the right answer and bring them back to level 1
-local function TouchListenerWrongAnswer3(touch)
-    userAnswer = wrongText3.text
-    
-    if (touch.phase == "ended") then
-
-        BackToLevel1( )
-        
-    end 
-end
-
---checking to see if the user pressed the right answer and bring them back to level 1
-local function TouchListenerWrongAnswer4(touch)
-    userAnswer = wrongText4.text
-    
-    if (touch.phase == "ended") then
-
-        BackToLevel1( )
-        
-    end 
-end
-
 
 
 --adding the event listeners 
@@ -138,8 +111,7 @@ local function AddTextListeners ( )
     answerText:addEventListener( "touch", TouchListenerAnswer )
     wrongText1:addEventListener( "touch", TouchListenerWrongAnswer)
     wrongText2:addEventListener( "touch", TouchListenerWrongAnswer2)
-    wrongText3:addEventListener( "touch", TouchListenerWrongAnswer3)
-    wrongText4:addEventListener( "touch", TouchListenerWrongAnswer4)
+
 end
 
 --removing the event listeners
@@ -147,71 +119,65 @@ local function RemoveTextListeners()
     answerText:removeEventListener( "touch", TouchListenerAnswer )
     wrongText1:removeEventListener( "touch", TouchListenerWrongAnswer)
     wrongText2:removeEventListener( "touch", TouchListenerWrongAnswer2)
-    wrongText3:removeEventListener( "touch", TouchListenerWrongAnswer3)
-    wrongText4:removeEventListener( "touch", TouchListenerWrongAnswer4)
 end
 
 local function AskQuestion()
-    --creating random numbers
-    randomnumber = math.random (1,2)
 
-    if(randomnumber == 1) then
-        answer = answer 
+    if(randomnumber == 1) then 
 
-    --creating the question depending on the selcetion number
-    questionText.text = firstNumber .. " + " .. secondNumber .. " ="
+        --creating the question depending on the selcetion number
+        --questionText.text = 
 
-    --creating answer text from list it corispondes with the animals list
-    answerText.text = answer
+        --creating answer text from list it corispondes with the animals list
+        answerText.text = answer
     
-    --creating wrong answers
-    wrongText1.text = wrongAnswer1
-    wrongText2.text = wrongAnswer2
-end
-
-local function PositionAnswers()
-
-    --creating random start position in a cretain area
-    answerPosition = math.random(1,3)
-
-    if (answerPosition == 1) then
-
-        answerText.x = X1
-        answerText.y = Y1
-        
-        wrongText1.x = X2
-        wrongText1.y = Y2
-        
-        wrongText2.x = X1
-        wrongText2.y = Y2
-
-        
-    elseif (answerPosition == 2) then
-
-        answerText.x = X2
-        answerText.y = Y1
-            
-        wrongText1.x = X1
-        wrongText1.y = Y1
-            
-        wrongText2.x = X2
-        wrongText2.y = Y2
-
-    elseif (answerPosition == 3) then
-
-        answerText.x = X1
-        answerText.y = Y2
-            
-        wrongText1.x = X2
-        wrongText1.y = Y1
-            
-        wrongText2.x = X1
-        wrongText2.y = Y1
-
-    
+        --creating wrong answers
+        wrongText1.text = wrongAnswer1
+        wrongText2.text = wrongAnswer2
     end
 end
 
+--local function PositionAnswers()
+
+    --creating random start position in a cretain area
+    --answerPosition = math.random(1,3)
+
+   -- if (answerPosition == 1) then
+
+     --   answerText.x = X2
+      --  answerText.y = Y1
+        
+      --  wrongText1.x = X1
+        --wrongText1.y = Y1
+        
+       -- wrongText2.x = display.contentCenterX
+       -- wrongText2.y = Y2
+        
+    --elseif (answerPosition == 2) then
+
+      --  answerText.x = display.contentCenterX
+       -- answerText.y = Y2
+            
+       -- wrongText1.x = X2
+       -- wrongText1.y = Y1
+            
+       -- wrongText2.x = X1
+        --wrongText2.y = Y1
+
+
+   -- elseif (answerPosition == 3) then
+
+        --answerText.x = X1
+        --answerText.y = Y1
+            
+        --wrongText1.x = display.contentCenterX
+       -- wrongText1.y = Y2
+            
+        --wrongText2.x = X2
+        --wrongText2.y = Y1
+      
+   -- end
+--end
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -235,16 +201,12 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
+    questionText = display.newText("what is blah blah blah", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
 
     -- create the answer text object & wrong answer text objects
-    answerText = display.newText("", X1, Y2, Arial, 75)
-    answerText.anchorX = 0
-    wrongText1 = display.newText("", X2, Y2, Arial, 75)
-    wrongText1.anchorX = 0
-    wrongText2 = display.newText("", X1, Y1, Arial, 75)
-    wrongText2.anchorX = 0
-
+    answerText = display.newText("yes", display.contentWidth*5/7, display.contentHeight*5.5/7, Arial, 75)
+    wrongText1 = display.newText("no", display.contentWidth*2/7, display.contentHeight*5.5/7, Arial, 75)
+    wrongText2 = display.newText("", display.contentCenterX, display.contentHeight*5/8, Arial, 75)
     -----------------------------------------------------------------------------------------
 
     -- insert all objects for this scene into the scene group
@@ -254,7 +216,7 @@ function scene:create( event )
     sceneGroup:insert(answerText)
     sceneGroup:insert(wrongText1)
     sceneGroup:insert(wrongText2)
-    sceneGroup:insert(wrongText3)
+
 
 
 end --function scene:create( event )
@@ -279,8 +241,7 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-        DisplayQuestion()
-        PositionAnswers()
+        
         AddTextListeners()
     end
 

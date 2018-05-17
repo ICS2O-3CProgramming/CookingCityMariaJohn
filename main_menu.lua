@@ -38,7 +38,8 @@ local playButton
 local creditButton
 local helpButton
 
-
+local bkgMusic = audio.loadStream( "Sounds/Lets_Go_2.mp3")
+local bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
