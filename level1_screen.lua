@@ -46,7 +46,7 @@ local goal
 -- text for level1
 local level1text
 local lives = 3
-local questionsAnswered = 0
+local correctfood = 0
 local correctObject1
 local correctObject2
 local correctObject3
@@ -113,7 +113,7 @@ end
 -- Creating Transition to help Screen
 local function CookButton()
     -- show overlay with math question
-    if (questionsAnswered == 3) then
+    if (correctfood == 3) then
 
         pizza.isVisible = true
         -- make the sauce visible over top of the pizza
@@ -125,7 +125,7 @@ local function CookButton()
         correctObject1.isVisible = true
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
-        questionsAnswered = questionsAnswered  + 1 
+        correctfood = correctfood  + 1 
     else
         incorrectObject4.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -154,7 +154,7 @@ end
 -- Creating Transition to help Screen
 local function SaucePacketButton()
     -- show overlay with math question
-    if (questionsAnswered == 0) then
+    if (correctfood == 0) then
         -- make the sauce packet invisible
         saucepacket.isVisible = false
 
@@ -164,7 +164,8 @@ local function SaucePacketButton()
         correctObject1.isVisible = true
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
-        questionsAnswered = questionsAnswered  + 1 
+        correctfood = correctfood  + 1 
+
     else
         incorrectObject1.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -196,7 +197,7 @@ end
 -- Creating Transition to help Screen
 local function CheeseButton()
     -- show overlay with math question
-    if (questionsAnswered == 1) then
+    if (correctfood == 1) then
         -- make the sauce packet invisible
         cheese.isVisible = false
 
@@ -206,7 +207,7 @@ local function CheeseButton()
         correctObject2.isVisible = true
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
-        questionsAnswered = questionsAnswered  + 1 
+        correctfood = correctfood  + 1 
     else
         incorrectObject1.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -236,7 +237,7 @@ end
 -- Creating Transition to help Screen
 local function PeperoniButton()
     -- show overlay with math question
-    if (questionsAnswered == 2) then
+    if (correctfood == 2) then
         -- make the sauce packet invisible
         peperoni.isVisible = false
 
@@ -247,7 +248,7 @@ local function PeperoniButton()
         timer.performWithDelay(1000, HideCorrect)
 
         -- adding to the score
-        questionsAnswered = questionsAnswered  + 1 
+        correctfood = correctfood  + 1 
     else
         incorrectObject3.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
