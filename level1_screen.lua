@@ -59,6 +59,9 @@ local incorrectObject4
 local hat1
 local hat2
 local hat3
+
+local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
+local bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -126,6 +129,8 @@ local function CookButton()
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         correctfood = correctfood  + 1 
+        -- show overlay with math question
+        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject4.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -165,6 +170,8 @@ local function SaucePacketButton()
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         correctfood = correctfood  + 1 
+        -- show overlay with math question
+        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
 
     else
         incorrectObject1.isVisible = true
@@ -208,6 +215,8 @@ local function CheeseButton()
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         correctfood = correctfood  + 1 
+        -- show overlay with math question
+        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject1.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -249,6 +258,9 @@ local function PeperoniButton()
 
         -- adding to the score
         correctfood = correctfood  + 1 
+
+        -- show overlay with math question
+        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject3.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -745,6 +757,7 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
+        bkgMusicChannel1 = audio.stop()
 
     -----------------------------------------------------------------------------------------
 
