@@ -62,7 +62,6 @@ end
 -----------------------------------------------------------------------------------------
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerAnswer(touch)
-    userAnswer = answerText
     
     if (touch.phase == "ended") then
 
@@ -75,7 +74,6 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer(touch)
-    userAnswer = wrongText1
     
     if (touch.phase == "ended") then
         
@@ -88,7 +86,6 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer2(touch)
-    userAnswer = wrongText2
     
     if (touch.phase == "ended") then
 

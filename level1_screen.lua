@@ -168,7 +168,6 @@ local function CookButton()
         peperonislices.isVisible = false
         pizzadough.isVisible = false
 
-        correctObject1.isVisible = true
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         correctfood = correctfood  + 1 
@@ -209,12 +208,11 @@ local function SaucePacketButton()
         -- make the sauce visible over top of the pizza
         sauce.isVisible = true
 
-        correctObject1.isVisible = true
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        composer.showOverlay( "L1question1", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L1question2", { isModal = true, effect = "fade", time = 100})
 
     else
         incorrectObject1.isVisible = true
@@ -254,12 +252,11 @@ local function CheeseButton()
         -- make the sauce visible over top of the pizza
         shreddedcheese.isVisible = true
 
-        correctObject2.isVisible = true
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        composer.showOverlay( "L1question2", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L1question1", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject1.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -296,7 +293,6 @@ local function PeperoniButton()
         -- make the sauce visible over top of the pizza
         peperonislices.isVisible = true
 
-        correctObject3.isVisible = true
         timer.performWithDelay(1000, HideCorrect)
 
         -- adding to the score

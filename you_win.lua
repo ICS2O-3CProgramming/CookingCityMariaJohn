@@ -30,7 +30,7 @@ local scene = composer.newScene( sceneName )
 
 -- The local variables for this scene
 local bkg_image
-local backButton
+local nextLevel
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -41,6 +41,22 @@ local backButton
    -- composer.gotoScene( "main_menu", {effect = "slideDown", time = 500})
 --end
 
+local function TouchListenerNextLevel(touch)
+    
+    if (touch.phase == "ended") then
+
+        BackToLevelSelect( )
+        
+    end 
+end
+
+local function AddTextListener()
+    answerText:addEventListener( "touch", TouchListenerNextLevel )
+end
+
+local function RemoveTextListener()
+    answerText:removeEventListener( "touch", TouchListenerNextLevel )
+end
 -- The function called when the screen doesn't exist
 function scene:create( event )
 
@@ -62,24 +78,13 @@ function scene:create( event )
         -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image ) 
 
-    -- Creating Back Button
-    backButton = widget.newButton( 
-    {
-        -- Setting Position
-        x = display.contentWidth*1/8,
-        y = display.contentHeight*10/11,
+    nextLevel = display.newText("Next Level", display.contentWidth*2/7, display.contentHeight*5.5/7, Arial, 75)
 
-        -- Setting Visual Properties
-        defaultFile = "Images/BackButtonMaria.png",
-        overFile = "Images/BackButtonMariaPressed.png",
+   -- x = display.contentWidth*1/8,
+    --y = display.contentHeight*10/11,
 
-        -- Setting Functional Properties
-        onRelease = BackTransition
+    sceneGroup:insert(nextLevel)
 
-    } )
-
-    -- Associating Buttons with this scene
-    sceneGroup:insert( backButton )
    
 
 end --function scene:create( event )
@@ -106,6 +111,7 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
+        AddTextListener()
     end
 
 end --function scene:show( event )
@@ -130,6 +136,7 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+        RemoveTextListeners()
     end
 
 end --function scene:hide( event )
