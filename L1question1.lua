@@ -135,11 +135,11 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("W", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
+    questionText = display.newText("What is the Second step ", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
 
     -- create the answer text object & wrong answer text objects
-    answerText = display.newText("yes", display.contentWidth*5/7, display.contentHeight*5.5/7, Arial, 75)
-    wrongText1 = display.newText("no", display.contentWidth*2/7, display.contentHeight*5.5/7, Arial, 75)
+    answerText = display.newText("Ajouter de Fromage", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
+    wrongText1 = display.newText("Ajouter Carotte", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 70)
     wrongText2 = display.newText("", display.contentCenterX, display.contentHeight*5/8, Arial, 75)
     -----------------------------------------------------------------------------------------
 
