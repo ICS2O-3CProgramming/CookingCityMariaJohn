@@ -42,27 +42,34 @@ local level1
 local level2
 local level3
 
-local bkgMusic = audio.loadStream( "Sounds/Lets_Go_2.mp3")
-local bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
+local number = 0
+
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
 
 -- Creating Transition to Level1 Screen
 local function Level1( )
-
+    number = number +1
     composer.gotoScene( "level1_screen", {effect = "fromBottom", time = 500})
 end    
 
 -- Creating Transition to credit Screen
 local function level2( )
-    composer.gotoScene( "credit_screen", {effect = "fromBottom", time = 500})
+    
+    if (number == 1)then
+        composer.gotoScene( "credit_screen", {effect = "fromBottom", time = 500})
+    end
 end  
 
 -- Creating Transition to help Screen
 local function level3( )
-    composer.gotoScene( "help_screen", {effect = "fromBottom", time = 500})
-end    
+
+    if (number == 2)then
+        composer.gotoScene( "help_screen", {effect = "fromBottom", time = 500})
+    end
+end 
+
 
 
 
@@ -102,8 +109,8 @@ function scene:create( event )
             y = display.contentHeight*3.3/8,
 
             -- Insert the images here
-            defaultFile = "Images/StartButtonMaria.png",
-            overFile = "Images/StartButtonMariaPressed.png",
+            defaultFile = "Images/level1button.png",
+            overFile = "Images/level1buttonpressed.png",
 
 
 
@@ -119,8 +126,8 @@ function scene:create( event )
             y = display.contentHeight*4.4/8,
 
             -- Insert the images here
-            defaultFile = "Images/CreditButtonMaria.png",
-            overFile = "Images/CreditButtonMariaPressed.png",
+            defaultFile = "Images/level2button.png",
+            overFile = "Images/level2buttonpressed.png",
 
 
 
@@ -136,8 +143,8 @@ function scene:create( event )
             y = display.contentHeight*5.5/8,
 
             -- Insert the images here
-            defaultFile = "Images/HelpButtonMaria.png",
-            overFile = "Images/HelpButtonMariaPressed.png",
+            defaultFile = "Images/level3button.png",
+            overFile = "Images/level3buttonpressed.png",
 
 
 
