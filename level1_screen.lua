@@ -46,6 +46,7 @@ local goal
 -- text for level1
 local level1text
 local lives = 3
+local points = 0
 local correctfood = 0
 local correctObject1
 local correctObject2
@@ -90,6 +91,10 @@ local function YouLoseTransition()
     composer.gotoScene( "you_lose" )
 end
 
+local function YouWinTransition()
+    composer.gotoScene( "you_Win" )
+end
+
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerResume(touch)
     
@@ -100,7 +105,45 @@ local function TouchListenerResume(touch)
     end 
 end
 
+function WrongAnswer()
+    
+    incorrectObject2.isVisible = true
+    timer.performWithDelay(1000, HideIncorrect)
+    -- show overlay with math question
+    lives = lives - 1
+    
+   if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+end
 
+function RightAnswer()
+    
+    correctObject2.isVisible = true
+    timer.performWithDelay(1000, HideCorrect)
+    -- show overlay with math question
+    points = points + 1
+    
+    if (points == 4) then
+
+        timer.performWithDelay(1000, YouWinTransition)
+    end
+end
 -- Creating Transition to help Screen
 local function OptionScreen( )
     -- show overlay with math question
@@ -130,7 +173,7 @@ local function CookButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L1question4", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject4.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -171,7 +214,7 @@ local function SaucePacketButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L1question1", { isModal = true, effect = "fade", time = 100})
 
     else
         incorrectObject1.isVisible = true
@@ -216,7 +259,7 @@ local function CheeseButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L1question2", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject1.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -259,8 +302,8 @@ local function PeperoniButton()
         -- adding to the score
         correctfood = correctfood  + 1 
 
-        -- show overlay with math question
-        --composer.showOverlay( "questions1", { isModal = true, effect = "fade", time = 100})
+        -- show overlay with question
+        composer.showOverlay( "L1question3", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject3.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)

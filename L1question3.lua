@@ -21,7 +21,7 @@ local physics = require( "physics")
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "questions1"
+sceneName = "L1question3"
 
 -----------------------------------------------------------------------------------------
 
@@ -33,12 +33,7 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
 
 -- The local variables for this scene
-local questionText1
-local questionText1
-
-local answer
-local wrongAnswer1
-local wrongAnswer2
+local questionText
 
 local answerText 
 local wrongAnswerText1
@@ -53,10 +48,6 @@ local textTouched = false
 
 local randomnumber
 
-local Y1 = display.contentWidth*5/7
-local X2 =  display.contentHeight*5.5/7
-local X1 = display.contentWidth*2/7
-local Y2 = display.contentHeight*5/8
 -----------------------------------------------------------------------------------------
 --LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -75,7 +66,7 @@ local function TouchListenerAnswer(touch)
     
     if (touch.phase == "ended") then
 
-
+        RightAnswer( )
         BackToLevel1( )
     
     end 
@@ -88,7 +79,8 @@ local function TouchListenerWrongAnswer(touch)
     
     if (touch.phase == "ended") then
         
-        BackToLevel1( )
+        WrongAnswer( )
+        BackToLevel1( ) 
         
         
     end 
@@ -100,7 +92,8 @@ local function TouchListenerWrongAnswer2(touch)
     
     if (touch.phase == "ended") then
 
-        BackToLevel1( )
+        WrongAnswer( )
+        BackToLevel1( ) 
         
     end 
 end
@@ -121,63 +114,7 @@ local function RemoveTextListeners()
     wrongText2:removeEventListener( "touch", TouchListenerWrongAnswer2)
 end
 
-local function AskQuestion()
 
-    if(randomnumber == 1) then 
-
-        --creating the question depending on the selcetion number
-        --questionText.text = 
-
-        --creating answer text from list it corispondes with the animals list
-        answerText.text = answer
-    
-        --creating wrong answers
-        wrongText1.text = wrongAnswer1
-        wrongText2.text = wrongAnswer2
-    end
-end
-
---local function PositionAnswers()
-
-    --creating random start position in a cretain area
-    --answerPosition = math.random(1,3)
-
-   -- if (answerPosition == 1) then
-
-     --   answerText.x = X2
-      --  answerText.y = Y1
-        
-      --  wrongText1.x = X1
-        --wrongText1.y = Y1
-        
-       -- wrongText2.x = display.contentCenterX
-       -- wrongText2.y = Y2
-        
-    --elseif (answerPosition == 2) then
-
-      --  answerText.x = display.contentCenterX
-       -- answerText.y = Y2
-            
-       -- wrongText1.x = X2
-       -- wrongText1.y = Y1
-            
-       -- wrongText2.x = X1
-        --wrongText2.y = Y1
-
-
-   -- elseif (answerPosition == 3) then
-
-        --answerText.x = X1
-        --answerText.y = Y1
-            
-        --wrongText1.x = display.contentCenterX
-       -- wrongText1.y = Y2
-            
-        --wrongText2.x = X2
-        --wrongText2.y = Y1
-      
-   -- end
---end
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
