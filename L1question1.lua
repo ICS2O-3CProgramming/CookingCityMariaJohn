@@ -43,10 +43,8 @@ local answerPosition = 1
 local bkg
 local cover
 
-local userAnswer
 local textTouched = false
 
-local randomnumber
 
 -----------------------------------------------------------------------------------------
 --LOCAL FUNCTIONS
@@ -138,9 +136,9 @@ function scene:create( event )
     questionText = display.newText("What is the Second step ", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
 
     -- create the answer text object & wrong answer text objects
-    answerText = display.newText("Ajouter de Fromage", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
-    wrongText1 = display.newText("Ajouter Carotte", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 70)
-    wrongText2 = display.newText("", display.contentCenterX, display.contentHeight*5/8, Arial, 75)
+    answerText = display.newText("Ajouter de Fromage.", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
+    wrongText1 = display.newText("Ajouter Carotte.", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 70)
+    wrongText2 = display.newText("Ajouter du chocolat.", display.contentWidth*3.5/7, display.contentHeight*3.5/7, Arial, 75)
     -----------------------------------------------------------------------------------------
 
     -- insert all objects for this scene into the scene group

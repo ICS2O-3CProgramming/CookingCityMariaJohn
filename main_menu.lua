@@ -45,8 +45,8 @@ local bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
 -----------------------------------------------------------------------------------------
 
 -- Creating Transition to Level1 Screen
-local function Level1ScreenTransition( )
-    composer.gotoScene( "level1_screen", {effect = "fromBottom", time = 500})
+local function LevelSelectTransition( )
+    composer.gotoScene( "level_select", {effect = "fromBottom", time = 500})
 end    
 
 -- Creating Transition to credit Screen
@@ -102,7 +102,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = Level1ScreenTransition          
+            onRelease = LevelSelectTransition          
         } )
     ---------------------------------------------------------------------------------------
     -- Creating Credits Button

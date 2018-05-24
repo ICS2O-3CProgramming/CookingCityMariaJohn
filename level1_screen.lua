@@ -132,6 +132,47 @@ function WrongAnswer()
     end
 end
 
+function WrongAnswer2()
+    
+    incorrectObject2.isVisible = true
+    
+    if (points == 3) then
+        
+        timer.performWithDelay(1000, YouWinTransition)
+    
+    elseif (points == 2) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    
+    elseif (points == 1) then
+
+        timer.performWithDelay(200, YouLoseTransition)
+    
+    elseif (points == 0) then
+
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+
+    if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+end
+
 function RightAnswer()
     
     correctObject2.isVisible = true
@@ -144,6 +185,37 @@ function RightAnswer()
         timer.performWithDelay(1000, YouWinTransition)
     end
 end
+
+function RightAnswer2()
+    
+    correctObject2.isVisible = true
+    timer.performWithDelay(1000, HideCorrect)
+    -- show overlay with math question
+    points = points + 1
+    
+    if (points == 4) then
+        
+        timer.performWithDelay(1000, YouWinTransition)
+    
+    elseif (points == 3) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    
+    elseif (points == 2) then
+
+        timer.performWithDelay(200, YouWinTransition)
+    
+    elseif (points == 1) then
+
+        timer.performWithDelay(200, YouLoseTransition)
+
+    elseif (points == 0) then
+
+        timer.performWithDelay(200, YouLoseTransition)
+
+    end
+end
+
 -- Creating Transition to help Screen
 local function OptionScreen( )
     -- show overlay with math question

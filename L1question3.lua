@@ -43,10 +43,8 @@ local answerPosition = 1
 local bkg
 local cover
 
-local userAnswer
 local textTouched = false
 
-local randomnumber
 
 -----------------------------------------------------------------------------------------
 --LOCAL FUNCTIONS
@@ -62,7 +60,6 @@ end
 -----------------------------------------------------------------------------------------
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerAnswer(touch)
-    userAnswer = answerText
     
     if (touch.phase == "ended") then
 
@@ -75,7 +72,6 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer(touch)
-    userAnswer = wrongText1
     
     if (touch.phase == "ended") then
         
@@ -88,7 +84,6 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer2(touch)
-    userAnswer = wrongText2
     
     if (touch.phase == "ended") then
 
@@ -138,12 +133,12 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("Is the goal a Carrot Cake ", display.contentCenterX, display.contentCenterY*3/8, Arial, 70)
+    questionText = display.newText(" What is the Goal ", display.contentCenterX, display.contentCenterY*3/8, Arial, 70)
 
     -- create the answer text object & wrong answer text objects
-    answerText = display.newText("no", display.contentWidth*5/7, display.contentHeight*5.5/7, Arial, 75)
-    wrongText1 = display.newText("yes", display.contentWidth*2/7, display.contentHeight*5.5/7, Arial, 75)
-    wrongText2 = display.newText("", display.contentCenterX, display.contentHeight*5/8, Arial, 75)
+    answerText = display.newText("Pizza", display.contentWidth*2/7, display.contentHeight*5.5/7, Arial, 75)
+    wrongText1 = display.newText("Carrot cake", display.contentWidth*5/7, display.contentHeight*5.5/7, Arial, 75)
+    wrongText2 = display.newText("Pancakes", display.contentCenterX, display.contentHeight*5/8, Arial, 75)
     -----------------------------------------------------------------------------------------
 
     -- insert all objects for this scene into the scene group

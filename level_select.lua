@@ -22,7 +22,7 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "main_menu"
+sceneName = "level_select"
 
 -----------------------------------------------------------------------------------------
 
@@ -42,7 +42,6 @@ local level1
 local level2
 local level3
 
-local number = 0
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -50,24 +49,19 @@ local number = 0
 
 -- Creating Transition to Level1 Screen
 local function Level1( )
-    number = number +1
     composer.gotoScene( "level1_screen", {effect = "fromBottom", time = 500})
 end    
 
--- Creating Transition to credit Screen
+-- Creating Transition to level2 Screen
 local function level2( )
-    
-    if (number == 1)then
-        composer.gotoScene( "credit_screen", {effect = "fromBottom", time = 500})
-    end
+
+    composer.gotoScene( "credit_screen", {effect = "fromBottom", time = 500})
 end  
 
--- Creating Transition to help Screen
+-- creating transition to level3 screen
 local function level3( )
+    composer.gotoScene( "help_screen", {effect = "fromBottom", time = 500})
 
-    if (number == 2)then
-        composer.gotoScene( "help_screen", {effect = "fromBottom", time = 500})
-    end
 end 
 
 
@@ -101,12 +95,12 @@ function scene:create( event )
     -- BUTTON WIDGETS
     -----------------------------------------------------------------------------------------   
 
-    -- Creating play Button
+    -- Creating level1 Button
     level1Button = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth/2,
-            y = display.contentHeight*3.3/8,
+            x = display.contentWidth*2.3/8,
+            y = display.contentHeight/2,
 
             -- Insert the images here
             defaultFile = "Images/level1button.png",
@@ -122,8 +116,8 @@ function scene:create( event )
     level2Button = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth/2,
-            y = display.contentHeight*4.4/8,
+            x = display.contentWidth*4/8,
+            y = display.contentHeight/2,
 
             -- Insert the images here
             defaultFile = "Images/level2button.png",
@@ -131,7 +125,7 @@ function scene:create( event )
 
 
 
-            -- When the button is released, call the Level1 screen transition function
+            -- When the button is released, call the Level2 screen transition function
             onRelease = level2          
         } )
     ---------------------------------------------------------------------------------------
@@ -139,8 +133,8 @@ function scene:create( event )
     level3Button = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth/2,
-            y = display.contentHeight*5.5/8,
+            x = display.contentWidth*5.7/8,
+            y = display.contentHeight/2,
 
             -- Insert the images here
             defaultFile = "Images/level3button.png",
@@ -148,11 +142,11 @@ function scene:create( event )
 
 
 
-            -- When the button is released, call the Level1 screen transition function
+            -- When the button is released, call the Level2 screen transition function
             onRelease = level3         
         } )
 
-
+    -- inserting images into scene group
     sceneGroup:insert( level1Button )
     sceneGroup:insert( level2Button )
     sceneGroup:insert( level3Button )

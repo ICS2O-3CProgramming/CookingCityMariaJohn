@@ -43,10 +43,8 @@ local answerPosition = 1
 local bkg
 local cover
 
-local userAnswer
 local textTouched = false
 
-local randomnumber
 
 -----------------------------------------------------------------------------------------
 --LOCAL FUNCTIONS
@@ -62,11 +60,10 @@ end
 -----------------------------------------------------------------------------------------
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerAnswer(touch)
-    userAnswer = answerText
     
     if (touch.phase == "ended") then
 
-        RightAnswer( )
+        RightAnswer2( )
         BackToLevel1( )
     
     end 
@@ -75,11 +72,10 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer(touch)
-    userAnswer = wrongText1
     
     if (touch.phase == "ended") then
         
-        WrongAnswer( )
+        WrongAnswer2( )
         BackToLevel1( )
         
         
@@ -88,11 +84,10 @@ end
 
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer2(touch)
-    userAnswer = wrongText2
     
     if (touch.phase == "ended") then
 
-        WrongAnswer( )
+        WrongAnswer2( )
         BackToLevel1( )
         
     end 
@@ -138,7 +133,7 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("How do you spell cheese in french", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
+    questionText = display.newText("How do you spell cheese in french?", display.contentCenterX, display.contentCenterY*3/8, Arial, 50)
 
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("Fromage", display.contentWidth*5/7, display.contentHeight*5.5/7, Arial, 75)
