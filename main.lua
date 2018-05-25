@@ -14,8 +14,12 @@ display.setStatusBar(display.HiddenStatusBar)
 
 -- Use composer library
 local composer = require( "composer" )
+<<<<<<< HEAD
 -----------------------------------------------------------------------------------------
 
 -- Go to the intro screen
 composer.gotoScene( "splash_screen" )
+=======
+----------------------------------------------------------------------------------------
+>>>>>>> 86c9a67c0b8f6c330e2bd4c6ece6315b920691a4
 
