@@ -1,67 +1,74 @@
--- Title: MovingImages
--- Name: Maria T
--- Course: ICS2O/3C
--- This program displays a beetle ship moving 
--- across the screen as well as another object 
--- moving in a different direction
+-----------------------------------------------------------------------------------------
+--
+-- level1_screen.lua
+-- Created by: Maria T
+-- Date: Month Day, Year
+-- Description: This is the level 1 screen of the game.
+-----------------------------------------------------------------------------------------
 
--- hide the status bar
-display.setStatusBar(display.HiddenStatusBar)
-
+-----------------------------------------------------------------------------------------
+-- INITIALIZATIONS
+-----------------------------------------------------------------------------------------
 
 -- Use Composer Libraries
 local composer = require( "composer" )
 local widget = require( "widget" )
 
-sceneName = "school_screen"
 -----------------------------------------------------------------------------------------
 
---Create Scene Object
-local scene = composer.newScene( sceneName )
+-- Naming Scene
+sceneName = "school_screen"
 
--- background image with width and height
---local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
+-----------------------------------------------------------------------------------------
+
+-- Creating Scene Object
+local scene = composer.newScene( sceneName )
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL VARIABLES
 -----------------------------------------------------------------------------------------
 
-scrollSpeed = 4
+scrollSpeedX= 4
+scrollSpeedY= 2
 
 -----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------
 
--- characheter image with width and height
-local SchoolMaria 
+-- The local variables for this scene
+local bkg_image
+local backButton
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
--- Function: MoveSchoolMaria
--- Input: this function accepts an event listener
--- Output: none
--- Description: this function adds the scroll speed to the x-value of the SchoolMaria
+
 local function MoveSchoolMaria(event)
 
-	-- The width equals the width plus the scrollspeed 
-	SchoolMaria.width = SchoolMaria.width + scrollSpeed
+    -- The width equals the width plus the scrollspeed 
+    bkg_image.width = bkg_image.width + scrollSpeedX
 
-	-- The Height equals the height plus the scrollspeed
-	SchoolMaria.height = SchoolMaria.height + scrollSpeed
+    -- The Height equals the height plus the scrollspeed
+    bkg_image.height = bkg_image.height + scrollSpeedY
 
-	--summerSoundChannel = audio.play(summerSound)
+    --summerSoundChannel = audio.play(summerSound)
 end
 
 -- The function that will go to the main menu 
 local function gotoLevel1()
-    composer.gotoScene( "level_screen" )
+    composer.gotoScene( "level1_screen" )
 end
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
+
+-- Creating Transitioning Function back to main menu
+
+local function BackTransition( )
+   composer.gotoScene( "level_screen", {effect = "slideDown", time = 500})
+end
 
 -- The function called when the screen doesn't exist
 function scene:create( event )
@@ -69,68 +76,46 @@ function scene:create( event )
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
 
-    SchoolMaria = display.newImage("Images/SchoolMaria.png")
+    -----------------------------------------------------------------------------------------
 
-    -- Creating pause Button
-    carrot = widget.newButton( 
-        {   
-            -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.6,
-            y = display.contentCenterY/2*3.3,
+    -- Insert the background image
+    bkg_image = display.newImageRect("Images/SchoolMaria.png", display.contentWidth, display.contentHeight)
+    bkg_image.x = display.contentCenterX
+    bkg_image.y = display.contentCenterY
+    bkg_image.width = display.contentWidth
+    bkg_image.height = display.contentHeight
 
-            -- Insert the images here
-            defaultFile = "L1images/carrot.png",
-            overFile = "L1images/carrot.png",
-
+        -- Insert background image into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( bkg_image ) 
 
 
-            -- When the button is released, call the Level1 screen transition function
-            onRelease = StrawberryButton          
-        } )
-	-- set the image to be transparent
-	--SchoolMaria.alpha = 1
 
-	--SchoolMaria:scale (1, 1)
+end --function scene:create( event )
 
-	--set the initial x and y position of SchoolMaria
-	--SchoolMaria.x = 515
-	--SchoolMaria.y = 350
-
-	-- insert the object into the scene group
-	sceneGroup:insert( SchoolMaria )
-
-
-end
-
-
+-----------------------------------------------------------------------------------------
 
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
 
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
-
-    -----------------------------------------------------------------------------------------
-
     local phase = event.phase
 
     -----------------------------------------------------------------------------------------
 
-    -- Called when the scene is still off screen (but is about to come on screen).
     if ( phase == "will" ) then
-       
+
+        -- Called when the scene is still off screen (but is about to come on screen).
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
-        -- start the splash screen music
-       -- WhooshboomSoundsChannel = audio.play(WhooshboomSounds )
 
-        -- Call the moveCompanyLogo function as soon as we enter the frame.
-        --Runtime:addEventListener("enterFrame", MoveSchoolMaria)
+        -- Called when the scene is now on screen.
+        -- Insert code here to make the scene come alive.
+        -- Example: start timers, begin animation, play audio, etc.
+        Runtime:addEventListener("enterFrame", MoveSchoolMaria)
+        timer.performWithDelay ( 3000, gotoLevel1) 
 
-        -- Go to the main menu screen after the given time.
-        --timer.performWithDelay ( 3000, gotoLevel1)          
-        
     end
 
 end --function scene:show( event )
@@ -146,19 +131,17 @@ function scene:hide( event )
 
     -----------------------------------------------------------------------------------------
 
-    -- Called when the scene is on screen (but is about to go off screen).
-    -- Insert code here to "pause" the scene.
-    -- Example: stop timers, stop animation, stop audio, etc.
-    if ( phase == "will" ) then  
+    if ( phase == "will" ) then
+        -- Called when the scene is on screen (but is about to go off screen).
+        -- Insert code here to "pause" the scene.
+        -- Example: stop timers, stop animation, stop audio, etc.
 
     -----------------------------------------------------------------------------------------
 
-    -- Called immediately after scene goes off screen.
     elseif ( phase == "did" ) then
-        
-        -- stop the Whooshboom sounds channel for this screen
-        --
-        --audio.stop(WhooshboomSoundsChannel)
+        -- Called immediately after scene goes off screen.
+        Runtime:removeEventListener("enterFrame", MoveSchoolMaria)
+
     end
 
 end --function scene:hide( event )
@@ -173,15 +156,22 @@ function scene:destroy( event )
 
     -----------------------------------------------------------------------------------------
 
-
     -- Called prior to the removal of scene's view ("sceneGroup").
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.
+
 end -- function scene:destroy( event )
 
+-----------------------------------------------------------------------------------------
+-- EVENT LISTENERS
+-----------------------------------------------------------------------------------------
+
+-- Adding Event Listeners
+scene:addEventListener( "create", scene )
+scene:addEventListener( "show", scene )
+scene:addEventListener( "hide", scene )
+scene:addEventListener( "destroy", scene )
+
+-----------------------------------------------------------------------------------------
 
 return scene
-
-
-
--------------------

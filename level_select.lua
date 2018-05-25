@@ -64,6 +64,9 @@ local function level3( )
 
 end 
 
+local function school( )
+    composer.gotoScene( "school_screen", {effect = "fromBottom", time = 500})
+end
 
 
 
@@ -109,7 +112,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = Level1          
+            onRelease = school          
         } )
     ---------------------------------------------------------------------------------------
     -- Creating Credits Button
@@ -179,6 +182,9 @@ function scene:show( event )
     -- Example: play timers, begin animation, play audio, etc.
     elseif ( phase == "did" ) then       
         
+        --Go to MainMenu
+        timer.performWithDelay ( 3000, gotoschool_screen) 
+
     end
 end -- function scene:show( event )
 
