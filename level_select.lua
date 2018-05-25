@@ -64,6 +64,9 @@ local function level3( )
 
 end 
 
+local function BackTransition( )
+    composer.gotoScene( "main_menu", {effect = "slideDown", time = 500})
+end
 
 
 
@@ -78,7 +81,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImage("Images/MainMenu.png")
+    bkg_image = display.newImage("Images/LevelSelectScreen.png")
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -112,7 +115,7 @@ function scene:create( event )
             onRelease = Level1          
         } )
     ---------------------------------------------------------------------------------------
-    -- Creating Credits Button
+    -- Creating level2 Button
     level2Button = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
@@ -129,7 +132,7 @@ function scene:create( event )
             onRelease = level2          
         } )
     ---------------------------------------------------------------------------------------
-    -- Creating help Button
+    -- Creating level3 Button
     level3Button = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
@@ -146,7 +149,26 @@ function scene:create( event )
             onRelease = level3         
         } )
 
-    -- inserting images into scene group
+    -------------------------------------------------------------------------------------
+
+    -- Creating Back Button
+    backButton = widget.newButton( 
+    {
+        -- Setting Position
+        x = display.contentWidth*1.5/8,
+        y = display.contentHeight*9.2/11,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/BackButtonMaria.png",
+        overFile = "Images/BackButtonMariaPressed.png",
+
+        -- Setting Functional Properties
+        onRelease = BackTransition
+
+    } )
+
+    -- Associating Buttons with this scene
+    sceneGroup:insert( backButton )
     sceneGroup:insert( level1Button )
     sceneGroup:insert( level2Button )
     sceneGroup:insert( level3Button )

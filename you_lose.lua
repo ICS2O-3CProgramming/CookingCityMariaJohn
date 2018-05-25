@@ -37,9 +37,9 @@ local backButton
 
 -- Creating Transitioning Function back to main menu
 
---local function BackTransition( )
-   -- composer.gotoScene( "main_menu", {effect = "slideDown", time = 500})
---end
+local function BackTransition( )
+ composer.gotoScene( "level_select", {effect = "slideDown", time = 500})
+end
 
 -- The function called when the screen doesn't exist
 function scene:create( event )
@@ -50,7 +50,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image
-    bkg_image = display.newImageRect("Images/spoon.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/LoseScreen.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
