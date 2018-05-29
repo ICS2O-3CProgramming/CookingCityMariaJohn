@@ -22,7 +22,7 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "level_select"
+sceneName = "leel_select"
 
 -----------------------------------------------------------------------------------------
 
@@ -48,14 +48,14 @@ local level3
 -----------------------------------------------------------------------------------------
 
 -- Creating Transition to Level1 Screen
-local function Level1( )
-    composer.gotoScene( "school_screen", {effect = "fromBottom", time = 500})
+local function level1( )
+    composer.gotoScene( "level1_screen", {effect = "fromBottom", time = 500})
 end    
 
 -- Creating Transition to level2 Screen
 local function level2( )
 
-    composer.gotoScene( "credit_screen", {effect = "fromBottom", time = 500})
+    composer.gotoScene( "level2_screen", {effect = "fromBottom", time = 500})
 end  
 
 -- creating transition to level3 screen
@@ -67,6 +67,8 @@ end
 
 local function school( )
     composer.gotoScene( "school_screen", {effect = "fromBottom", time = 500})
+    
+end
 
 local function BackTransition( )
     composer.gotoScene( "main_menu", {effect = "slideDown", time = 500})

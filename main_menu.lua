@@ -137,12 +137,14 @@ function scene:create( event )
 
             -- When the button is released, call the Level1 screen transition function
             onRelease = HelpScreenTransition          
-        } )
+        } ) 
 
 
-    sceneGroup:insert( playButton )
-    sceneGroup:insert( helpButton )
-    sceneGroup:insert( creditButton )
+
+        sceneGroup:insert( playButton )
+        sceneGroup:insert( helpButton )
+        sceneGroup:insert( creditButton )
+
 end 
 -- function scene:create( event )   
 
