@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 
 --level2_screen.lua 
 
-=======
+
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
@@ -38,20 +37,15 @@ local bkg_image
 local tacoShelldough
 ----------------
 local beefBowl
----------------------
 local carrot    
 local cheese
 local chocolate
-----------------
 local lettuce
----------------workingbelow
 local strawberry
 local tomato
 local beef
 local shreddedcheese
-------------------------
 local lettuceShredded
-------------------------
 local tacoShell
 local goal
 -- text for level1
@@ -915,4 +909,4 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
->>>>>>> 6d61e15038a4cc8a272a3b408eb8a92420a5fbf2
+
