@@ -43,7 +43,6 @@ local shreddedcheese
 local peperonislices
 local pizza 
 local goal
--- text for level1
 local level1text
 local lives = 3
 local points = 0
@@ -60,18 +59,19 @@ local incorrectObject4
 local hat1
 local hat2
 local hat3
-
+-- sound variables 
 local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
 local bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
 
-
+-- creating funtion to get back to the level 1 screen
 function ResumeGame()
 
 end
 
+-- creati 
 local function HideCorrect()
     correctObject1.isVisible = false
     correctObject2.isVisible = false
@@ -86,16 +86,17 @@ local function HideIncorrect()
     incorrectObject4.isVisible = false
 end
 
-
+--  transition to lose sreen
 local function YouLoseTransition()
     composer.gotoScene( "you_lose" )
 end
-
+ 
+-- transition to win screen 
 local function YouWinTransition()
     composer.gotoScene( "you_Win" )
 end
 
---checking to see if the user pressed the right answer and bring them back to level 1
+-- bringing the user back to level 1
 local function TouchListenerResume(touch)
     
     if (touch.phase == "ended") then
@@ -106,10 +107,11 @@ local function TouchListenerResume(touch)
 end
 
 function WrongAnswer()
-    
+    -- displaying a message
     incorrectObject2.isVisible = true
+    -- hiding the message
     timer.performWithDelay(1000, HideIncorrect)
-    -- show overlay with math question
+    
     lives = lives - 1
     
    if (lives == 3) then
@@ -152,6 +154,7 @@ function WrongAnswer2()
 
         timer.performWithDelay(200, YouLoseTransition)
     end
+    -- taking away a life for getting it wrong
 
     if (lives == 3) then
         hat1.isVisible = true
@@ -188,7 +191,9 @@ end
 
 function RightAnswer2()
     
+    -- displaying a message
     correctObject2.isVisible = true
+    -- hiding the message
     timer.performWithDelay(1000, HideCorrect)
     -- show overlay with math question
     points = points + 1
@@ -228,7 +233,7 @@ local function HowToScreen( )
     composer.showOverlay( "howto_screen", { isModal = true, effect = "fade", time = 100})
 end 
 
--- Creating Transition to help Screen
+-- Creating the actions the cook button will do once clicked
 local function CookButton()
     -- show overlay with math question
     if (correctfood == 3) then
@@ -246,9 +251,11 @@ local function CookButton()
         -- show overlay with math question
         composer.showOverlay( "L1question4", { isModal = true, effect = "fade", time = 100})
     else
+        -- displaying a message
         incorrectObject4.isVisible = true
+        -- hiding the message
         timer.performWithDelay(1000, HideIncorrect)
-        
+       -- taking away a life for getting it wrong 
         if (lives == 3) then
         hat1.isVisible = true
         hat2.isVisible = true
@@ -270,7 +277,7 @@ local function CookButton()
     end
 end
 
--- Creating Transition to help Screen
+-- Creating the actions the saucepacket button will do once clicked
 local function SaucePacketButton()
     -- show overlay with math question
     if (correctfood == 0) then
@@ -287,8 +294,11 @@ local function SaucePacketButton()
         composer.showOverlay( "L1question2", { isModal = true, effect = "fade", time = 100})
 
     else
+        -- displaying a message
         incorrectObject1.isVisible = true
+        -- hiding the message
         timer.performWithDelay(1000, HideIncorrect)
+        -- taking away a life for getting it wrong
         lives = lives - 1
         
         if (lives == 3) then
@@ -314,7 +324,7 @@ end
 
 
 
--- Creating Transition to help Screen
+-- Creating the actions the chesse button will do once clicked
 local function CheeseButton()
     -- show overlay with math question
     if (correctfood == 1) then
@@ -330,8 +340,11 @@ local function CheeseButton()
         -- show overlay with math question
         composer.showOverlay( "L1question1", { isModal = true, effect = "fade", time = 100})
     else
+        -- displaying a message
         incorrectObject1.isVisible = true
+        -- hiding the message
         timer.performWithDelay(1000, HideIncorrect)
+        -- taking away a life for getting it wrong
         lives = lives - 1
         
         if (lives == 3) then
@@ -355,7 +368,7 @@ local function CheeseButton()
     end
 end
 
--- Creating Transition to help Screen
+-- Creating the actions the pepperoni button will do once clicked
 local function PeperoniButton()
     -- show overlay with math question
     if (correctfood == 2) then
@@ -373,8 +386,11 @@ local function PeperoniButton()
         -- show overlay with question
         composer.showOverlay( "L1question3", { isModal = true, effect = "fade", time = 100})
     else
+        -- displaying a message
         incorrectObject3.isVisible = true
+        -- hiding the message
         timer.performWithDelay(1000, HideIncorrect)
+        -- taking away a life for getting it wrong
         lives = lives - 1
         
         if (lives == 3) then
@@ -398,11 +414,13 @@ local function PeperoniButton()
     end
 end
 
--- Creating Transition to help Screen
+-- Creating the actions the carrot button will do once clicked
 local function CarrotButton()
+    -- displaying a message
     incorrectObject2.isVisible = true
+    -- hiding the message
     timer.performWithDelay(1000, HideIncorrect)
-    -- show overlay with math question
+    -- taking away a life for getting it wrong
     lives = lives - 1
     
    if (lives == 3) then
@@ -425,12 +443,14 @@ local function CarrotButton()
     end
 end
 
--- Creating Transition to help Screen
+-- Creating the actions the strawberry button will do once clicked
 local function StrawberryButton()
 
+    -- displaying a message
     incorrectObject3.isVisible = true
+    -- hiding the message
     timer.performWithDelay(1000, HideIncorrect)
-    -- show overlay with math question
+    -- taking away a life for getting it wrong
     lives = lives - 1
     
     if (lives == 3) then
@@ -452,11 +472,15 @@ local function StrawberryButton()
         timer.performWithDelay(200, YouLoseTransition)
     end
 end
--- Creating Transition to help Screen
+
+-- Creating the actions the chocolate button will do once clicked
 local function ChocolateButton()
+    -- displaying a message 
     incorrectObject2.isVisible = true
+    -- hiding the message
     timer.performWithDelay(1500, HideIncorrect)
 
+    -- taking away a life for getting it wrong
     lives = lives - 1    
     
     if (lives == 3) then
@@ -479,11 +503,12 @@ local function ChocolateButton()
     end
 end
 
--- Creating Transition to help Screen
+-- Creating the actions the tomato button will do once clicked
 local function TomatoButton()
 
     incorrectObject1.isVisible = true
     timer.performWithDelay(1000, HideIncorrect)
+    -- taking away a life for getting it wrong
     lives = lives - 1
     
     if (lives == 3) then
@@ -875,6 +900,7 @@ function scene:hide( event )
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
 
+        Runtime:removeEventListener("enterFrame", MoveLevel1Text)
     end
 
 end --function scene:hide( event )

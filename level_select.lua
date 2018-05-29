@@ -64,13 +64,12 @@ local function level3( )
 
 end 
 
-<<<<<<< HEAD
 local function school( )
     composer.gotoScene( "school_screen", {effect = "fromBottom", time = 500})
-=======
+end 
+
 local function BackTransition( )
     composer.gotoScene( "main_menu", {effect = "slideDown", time = 500})
->>>>>>> 86c9a67c0b8f6c330e2bd4c6ece6315b920691a4
 end
 
 
