@@ -60,10 +60,14 @@ end
 
 -- creating transition to level3 screen
 local function level3( )
-    composer.gotoScene( "help_screen", {effect = "fromBottom", time = 500})
+    composer.gotoScene( "level3_screen", {effect = "fromBottom", time = 500})
 
 end 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 58a162fb571eb95a875bb51d8a3bb65464fd4903
 local function school( )
     composer.gotoScene( "school_screen", {effect = "fromBottom", time = 500})
 end 
