@@ -136,8 +136,8 @@ function scene:create( event )
 
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("No", display.contentWidth*5/7, display.contentHeight*5.5/7, Arial, 75)
-    wrongText1 = display.newText("Yes 5 of them", display.contentWidth*2/7, display.contentHeight*5.5/7, Arial, 75)
-    wrongText2 = display.newText("Yes", display.contentCenterX, display.contentHeight*5/8, Arial, 75)
+    wrongText2 = display.newText("Yes", display.contentWidth*2/7, display.contentHeight*5.5/7, Arial, 75)
+    wrongText1 = display.newText("There are 5", display.contentCenterX, display.contentHeight*5/8, Arial, 75)
     -----------------------------------------------------------------------------------------
 
     -- insert all objects for this scene into the scene group

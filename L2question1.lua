@@ -132,11 +132,11 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("Coquille de tacos en anglais?", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
+    questionText = display.newText("Coquille de tacos en anglais?", display.contentCenterX, display.contentCenterY*3/8, Arial, 60)
 
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("Taco Shell", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
-    wrongText1 = display.newText("Cheese Taco", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 70)
+    wrongText1 = display.newText("Cheese Taco", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 65)
     wrongText2 = display.newText("Chocolate Taco", display.contentWidth*3.5/7, display.contentHeight*3.5/7, Arial, 75)
     -----------------------------------------------------------------------------------------
 
