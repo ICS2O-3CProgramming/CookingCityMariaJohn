@@ -63,7 +63,7 @@ local function TouchListenerAnswer(touch)
     
     if (touch.phase == "ended") then
 
-        RightAnswer( )
+        L2RightAnswer( )
         BackToLevel1( )
     
     end 
@@ -75,7 +75,7 @@ local function TouchListenerWrongAnswer(touch)
     
     if (touch.phase == "ended") then
         
-        WrongAnswer( )
+        L2WrongAnswer( )
         BackToLevel1( ) 
         
         
@@ -87,7 +87,7 @@ local function TouchListenerWrongAnswer2(touch)
     
     if (touch.phase == "ended") then
 
-        WrongAnswer( )
+        L2WrongAnswer( )
         BackToLevel1( ) 
         
     end 

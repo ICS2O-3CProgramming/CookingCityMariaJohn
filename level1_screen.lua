@@ -86,6 +86,27 @@ local function HideIncorrect()
     incorrectObject4.isVisible = false
 end
 
+local function RestartLevel1()
+    -- makes all the objects visible or invisible when scene starts
+    saucepacket.isVisible = true
+    cheese.isVisible = true
+    peperoni.isVisible = true
+    sauce.isVisible = false
+    shreddedcheese.isVisible = false
+    peperonislices.isVisible = false
+    pizza.isVisible = false
+    pizzadough.isVisible = true
+    hat1.isVisible = true
+    hat2.isVisible = true
+    hat3.isVisible = true
+
+    points = 0
+    correctfood = 0
+    lives = 3
+end
+
+
+
 --  transition to lose sreen
 local function YouLoseTransition()
     composer.gotoScene( "you_lose" )
@@ -742,8 +763,8 @@ function scene:create( event )
     cook = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.17,
-            y = display.contentHeight-35,
+            x = display.contentCenterX*.49,
+            y = display.contentCenterY,
 
             -- Insert the images here
             defaultFile = "L1images/cookbutton.png",
@@ -874,6 +895,8 @@ function scene:show( event )
 
         -- MoveLevel1Text will be called over and over again
         Runtime:addEventListener("enterFrame", MoveLevel1Text)
+
+        RestartLevel1()
     end
 
 end --function scene:show( event )
