@@ -64,10 +64,7 @@ local function level3( )
 
 end 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 58a162fb571eb95a875bb51d8a3bb65464fd4903
 local function school( )
     composer.gotoScene( "school_screen", {effect = "fromBottom", time = 500})
 end 

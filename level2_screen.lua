@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-=======
-
---level2_screen.lua 
-
-
->>>>>>> 58a162fb571eb95a875bb51d8a3bb65464fd4903
------------------------------------------------------------------------------------------
---
 -- level1_screen.lua
 -- Created by: Maria T
 -- Date: Month Day, Year
@@ -40,17 +31,22 @@ local bkg_image
 local tacoShelldough
 ----------------
 local beefBowl
+---------------------
 local carrot    
 local cheese
 local chocolate
+----------------
 local lettuce
+---------------workingbelow
 local strawberry
 local salsa
 local salsajar
 local tomato
 local beef
 local shreddedcheese
+------------------------
 local lettuceShredded
+------------------------
 local tacoShell
 local goal
 -- text for level1
@@ -95,7 +91,6 @@ local function HideIncorrect()
     incorrectObject3.isVisible = false
     incorrectObject4.isVisible = false
 end
-
 
 
 local function YouLoseTransition()
@@ -191,7 +186,7 @@ function L2RightAnswer()
     -- show overlay with math question
     points = points + 1
     
-    if (points == 4) then
+    if (points == 3) then
 
         timer.performWithDelay(1000, YouWinTransition)
     end
@@ -204,48 +199,24 @@ function L2RightAnswer2()
     -- show overlay with math question
     points = points + 1
     
-    if (points == 4) then
+    if (points == 3) then
         
         timer.performWithDelay(1000, YouWinTransition)
     
-    elseif (points == 3) then  
+    elseif (points == 2) then  
         timer.performWithDelay(1000, YouWinTransition)
 
     
-    elseif (points == 2) then
+    elseif (points == 1) then
 
         timer.performWithDelay(200, YouWinTransition)
     
-    elseif (points == 1) then
-
-        timer.performWithDelay(200, YouLoseTransition)
-
     elseif (points == 0) then
 
         timer.performWithDelay(200, YouLoseTransition)
 
     end
 end
-
-local function RestartLevel2()
-    -- makes all the objects visible or invisible when scene starts
-    beefBowl.isVisible = true
-    cheese.isVisible = true
-    lettuce.isVisible = true
-    salsa.isVisible = false
-    shreddedcheese.isVisible = false
-    lettuceShredded.isVisible = false
-    tacoShell.isVisible = true
-    salsajar.isVisible = true
-    beef.isVisible = false
-    hat1.isVisible = true
-    hat2.isVisible = true
-    hat3.isVisible = true
-    points = 0
-    correctfood = 0
-    lives = 3
-end
-
 
 -- Creating Transition to help Screen
 local function OptionScreen( )
@@ -256,7 +227,7 @@ end
 -- Creating Transition to help Screen
 local function HowToScreen( )
     -- show overlay with math question
-    composer.showOverlay( "howto_screen2", { isModal = true, effect = "fade", time = 100})
+    composer.showOverlay( "howto_screen", { isModal = true, effect = "fade", time = 100})
 end 
 
 
@@ -282,26 +253,25 @@ local function beefBowlButton()
         lives = lives - 1
         
         if (lives == 3) then
-            hat1.isVisible = true
-            hat2.isVisible = true
-            hat3.isVisible = true
-        elseif (lives == 2) then
-            hat1.isVisible = true
-            hat2.isVisible = true
-            hat3.isVisible = false
-        elseif (lives == 1) then
-            hat1.isVisible = true
-            hat2.isVisible = false
-            hat3.isVisible = false
-        elseif (lives == 0) then
-            hat1.isVisible = false
-            hat2.isVisible = false
-            hat3.isVisible = false
-            timer.performWithDelay(200, YouLoseTransition)
-        end
+        	hat1.isVisible = true
+        	hat2.isVisible = true
+        	hat3.isVisible = true
+    	elseif (lives == 2) then
+        	hat1.isVisible = true
+        	hat2.isVisible = true
+        	hat3.isVisible = false
+    	elseif (lives == 1) then
+        	hat1.isVisible = true
+        	hat2.isVisible = false
+        	hat3.isVisible = false
+    	elseif (lives == 0) then
+        	hat1.isVisible = false
+        	hat2.isVisible = false
+        	hat3.isVisible = false
+        	timer.performWithDelay(200, YouLoseTransition)
+    	end
     end
 end
-
 
 
 -- Creating Transition to help Screen
@@ -325,23 +295,23 @@ local function CheeseButton()
         lives = lives - 1
         
         if (lives == 3) then
-            hat1.isVisible = true
-            hat2.isVisible = true
-            hat3.isVisible = true
-        elseif (lives == 2) then
-            hat1.isVisible = true
-            hat2.isVisible = true
-            hat3.isVisible = false
-        elseif (lives == 1) then
-            hat1.isVisible = true
-            hat2.isVisible = false
-            hat3.isVisible = false
-        elseif (lives == 0) then
-            hat1.isVisible = false
-            hat2.isVisible = false
-            hat3.isVisible = false
-            timer.performWithDelay(200, YouLoseTransition)
-        end
+        	hat1.isVisible = true
+        	hat2.isVisible = true
+        	hat3.isVisible = true
+    	elseif (lives == 2) then
+        	hat1.isVisible = true
+        	hat2.isVisible = true
+        	hat3.isVisible = false
+    	elseif (lives == 1) then
+        	hat1.isVisible = true
+        	hat2.isVisible = false
+        	hat3.isVisible = false
+    	elseif (lives == 0) then
+        	hat1.isVisible = false
+        	hat2.isVisible = false
+        	hat3.isVisible = false
+        	timer.performWithDelay(200, YouLoseTransition)
+    	end
     end
 end
 
@@ -368,35 +338,31 @@ local function lettuceButton()
         lives = lives - 1
         
         if (lives == 3) then
-            hat1.isVisible = true
-            hat2.isVisible = true
-            hat3.isVisible = true
-        elseif (lives == 2) then
-            hat1.isVisible = true
-            hat2.isVisible = true
-            hat3.isVisible = false
-        elseif (lives == 1) then
-            hat1.isVisible = true
-            hat2.isVisible = false
-            hat3.isVisible = false
-        elseif (lives == 0) then
-            hat1.isVisible = false
-            hat2.isVisible = false
-            hat3.isVisible = false
-            timer.performWithDelay(200, YouLoseTransition)
-        end
+        	hat1.isVisible = true
+        	hat2.isVisible = true
+        	hat3.isVisible = true
+    	elseif (lives == 2) then
+        	hat1.isVisible = true
+        	hat2.isVisible = true
+        	hat3.isVisible = false
+    	elseif (lives == 1) then
+        	hat1.isVisible = true
+        	hat2.isVisible = false
+        	hat3.isVisible = false
+    	elseif (lives == 0) then
+        	hat1.isVisible = false
+        	hat2.isVisible = false
+        	hat3.isVisible = false
+        	timer.performWithDelay(200, YouLoseTransition)
+    	end
     end
 end
 
 -- Creating Transition to help Screen
 local function SalsaButton()
     -- show overlay with math question
-    if (correctfood == 3) then
+    if (correctfood == 4) then
         -- make the beef packet invisible
-        shreddedcheese.isVisible = false
-        lettuceShredded.isVisible = false
-        beef.isVisible = false
-        tacoShell.isVisible = false
         salsajar.isVisible = false
 
         -- make the beef visible over top of the tacoShell
@@ -462,33 +428,6 @@ local function CarrotButton()
     end
 end
 
--- Creating Transition to help Screen
-local function StrawberryButton()
-
-    incorrectObject3.isVisible = true
-    timer.performWithDelay(1000, HideIncorrect)
-    -- show overlay with math question
-    lives = lives - 1
-    
-    if (lives == 3) then
-        hat1.isVisible = true
-        hat2.isVisible = true
-        hat3.isVisible = true
-    elseif (lives == 2) then
-        hat1.isVisible = true
-        hat2.isVisible = true
-        hat3.isVisible = false
-    elseif (lives == 1) then
-        hat1.isVisible = true
-        hat2.isVisible = false
-        hat3.isVisible = false
-    elseif (lives == 0) then
-        hat1.isVisible = false
-        hat2.isVisible = false
-        hat3.isVisible = false
-        timer.performWithDelay(200, YouLoseTransition)
-    end
-end
 -- Creating Transition to help Screen
 local function ChocolateButton()
     incorrectObject2.isVisible = true
@@ -558,11 +497,12 @@ function scene:create( event )
     bkg_image.width = display.contentWidth
     bkg_image.height = display.contentHeight
 
+
     -- Insert the image
-    tacoShell = display.newImageRect("L2images/tacoShell.png", 350, 350 )
+    tacoShell= display.newImageRect("L2images/tacoShell.png", 350, 350 )
     tacoShell.x = display.contentCenterX
     tacoShell.y = display.contentCenterY/1.2
-    
+
     -- Insert the image
     goal = display.newImageRect("L2images/salsa.png", 350, 350 )
     goal.x = display.contentWidth - 965
@@ -575,9 +515,7 @@ function scene:create( event )
     beef.x = display.contentCenterX
     beef.y = display.contentCenterY/1.2
     beef.isVisible = false
-    
-   
-    
+
     -- Insert the image
     shreddedcheese = display.newImageRect("L2images/shreddedcheese.png", 350, 350 )
     shreddedcheese.x = display.contentCenterX
@@ -589,13 +527,12 @@ function scene:create( event )
     lettuceShredded.x = display.contentCenterX
     lettuceShredded.y = display.contentCenterY/1.2
     lettuceShredded.isVisible = false
-    
+
     -- Insert the image
     salsa = display.newImageRect("L2images/salsa.png", 350, 350 )
     salsa.x = display.contentCenterX
     salsa.y = display.contentCenterY/1.2
     salsa.isVisible = false
-    
     
 
     level1text = display.newImageRect("L1images/level1text.png", 450, 195)
@@ -654,8 +591,8 @@ function scene:create( event )
     carrot = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.8,
-            y = display.contentCenterY/2*3.72,
+            x = display.contentCenterX*.6,
+            y = display.contentCenterY/2*3.3,
 
             -- Insert the images here
             defaultFile = "L1images/carrot.png",
@@ -754,11 +691,28 @@ function scene:create( event )
         } )
 
     -- Creating pause Button
+    cook = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.17,
+            y = display.contentHeight-35,
+
+            -- Insert the images here
+            defaultFile = "L1images/cookbutton.png",
+            overFile = "L1images/cookbuttonpressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = CookButton          
+        } )
+
+    -- Creating pause Button
     beefBowl = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.6,
-            y = display.contentCenterY/2*3.3,
+            x = display.contentCenterX*.8,
+            y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
             defaultFile = "L2images/beefbowl.png",
@@ -774,8 +728,8 @@ function scene:create( event )
     cheese = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*1.09,
-            y = display.contentCenterY/2*3.3,
+            x = display.contentCenterX*1.6,
+            y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
             defaultFile = "L1images/Cheese.png",
@@ -791,8 +745,8 @@ function scene:create( event )
     lettuce = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*1.6,
-            y = display.contentCenterY/2*3.72,
+            x = display.contentCenterX*1.09,
+            y = display.contentCenterY/2*3.3,
 
             -- Insert the images here
             defaultFile = "L2images/lettuce.png",
@@ -808,8 +762,8 @@ function scene:create( event )
     salsajar = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.8,
-            y = display.contentCenterY/2*3.3,
+            x = display.contentCenterX*1.09,
+            y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
             defaultFile = "L2images/salsajar.png",
@@ -833,10 +787,10 @@ function scene:create( event )
     sceneGroup:insert( beefBowl )
     sceneGroup:insert( chocolate )
     sceneGroup:insert( carrot )
-    sceneGroup:insert( salsajar )
-    sceneGroup:insert( salsa )
     sceneGroup:insert( lettuce )
     sceneGroup:insert( cheese )
+    sceneGroup:insert( salsajar )
+    sceneGroup:insert( salsa )
     sceneGroup:insert( tomato )
     sceneGroup:insert( Pause )
     sceneGroup:insert( level1text ) 
@@ -844,6 +798,7 @@ function scene:create( event )
     sceneGroup:insert( beef )
     sceneGroup:insert( shreddedcheese )
     sceneGroup:insert( lettuceShredded )
+    sceneGroup:insert( cook )
     sceneGroup:insert( goal )
     sceneGroup:insert( hat1 )
     sceneGroup:insert( hat2 )
@@ -889,8 +844,6 @@ function scene:show( event )
 
         -- MoveLevel1Text will be called over and over again
         Runtime:addEventListener("enterFrame", MoveLevel1Text)
-
-        RestartLevel2()
     end
 
 end --function scene:show( event )
@@ -950,7 +903,3 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
-<<<<<<< HEAD
-=======
-
->>>>>>> 58a162fb571eb95a875bb51d8a3bb65464fd4903
