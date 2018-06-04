@@ -1,11 +1,7 @@
-
---level2_screen.lua 
-
-
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
--- Created by: Maria T
+-- Created by: John N
 -- Date: Month Day, Year
 -- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
@@ -34,21 +30,25 @@ local scene = composer.newScene( sceneName )
 
 -- The local variables for this scene
 local bkg_image
-local tacoShelldough
-----------------
-local beefBowl
----------------------
-local carrot    
+local bowl
+local milkCarton    
 local cheese
-local chocolate
+local vanillaExtract
 local lettuce
-local strawberry
-local tomato
-local beef
+local flourBag
+local sugarBag
+local butterBlock
+local egg
 local shreddedcheese
-local lettuceShredded
-local tacoShell
+local milk
+local vanilla
+local flour
+local sugar
+local butter
+local eggYolk
 local goal
+local tomato
+local mix
 -- text for level1
 local level1text
 local lives = 3
@@ -92,6 +92,29 @@ local function HideIncorrect()
     incorrectObject4.isVisible = false
 end
 
+local function RestartLevel3()
+    -- makes all the objects visible or invisible when scene starts
+    butterBlock.isVisible = true
+    butter.isVisible = false
+    flour.isVisible = false
+    flourBag.isVisible = true
+    sugarBag.isVisible = true
+    sugar.isVisible = false
+    vanillaExtract.isVisible = true
+    vanilla.isVisible = false
+    bowl.isVisible = true
+    eggYolk.isVisible = false
+    egg.isVisible = true
+    milkCarton.isVisible = true
+    milk.isVisible = false
+    hat1.isVisible = true
+    hat2.isVisible = true
+    hat3.isVisible = true
+
+    points = 0
+    correctfood = 0
+    lives = 3
+end
 
 local function YouLoseTransition()
     composer.gotoScene( "you_lose" )
@@ -111,7 +134,7 @@ local function TouchListenerResume(touch)
     end 
 end
 
-function WrongAnswer()
+function L3WrongAnswer()
     
     incorrectObject2.isVisible = true
     timer.performWithDelay(1000, HideIncorrect)
@@ -138,7 +161,7 @@ function WrongAnswer()
     end
 end
 
-function WrongAnswer2()
+function L3WrongAnswer2()
     
     incorrectObject2.isVisible = true
     
@@ -179,7 +202,7 @@ function WrongAnswer2()
     end
 end
 
-function RightAnswer()
+function L3RightAnswer()
     
     correctObject2.isVisible = true
     timer.performWithDelay(1000, HideCorrect)
@@ -192,7 +215,7 @@ function RightAnswer()
     end
 end
 
-function RightAnswer2()
+function L3RightAnswer2()
     
     correctObject2.isVisible = true
     timer.performWithDelay(1000, HideCorrect)
@@ -231,7 +254,7 @@ local function HowToScreen( )
 end 
 
 -- Creating Transition to help Screen
-local function CookButton()
+local function MixButton()
     -- show overlay with math question
     if (correctfood == 3) then
 
@@ -273,14 +296,56 @@ local function CookButton()
 end
 
 -- Creating Transition to help Screen
-local function beefBowlButton()
+local function BakeButton()
+    -- show overlay with math question
+    if (correctfood == 3) then
+
+        tacoShell.isVisible = true
+        -- make the beef visible over top of the tacoShell
+        beef.isVisible = false
+        shreddedcheese.isVisible = false
+        lettuceShredded.isVisible = false
+        tacoShelldough.isVisible = false
+
+        timer.performWithDelay(1000, HideCorrect)
+        -- adding to the score
+        correctfood = correctfood  + 1 
+        -- show overlay with math question
+        composer.showOverlay( "L2question4", { isModal = true, effect = "fade", time = 100})
+    else
+        incorrectObject4.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
+        
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+    end
+end
+
+-- Creating Transition to help Screen
+local function EggButton()
     -- show overlay with math question
     if (correctfood == 0) then
         -- make the beef packet invisible
-        beefBowl.isVisible = false
+        egg.isVisible = false
 
         -- make the beef visible over top of the tacoShell
-        beef.isVisible = true
+        eggYolk.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
@@ -317,14 +382,14 @@ end
 
 
 -- Creating Transition to help Screen
-local function CheeseButton()
+local function FlourButton()
     -- show overlay with math question
     if (correctfood == 1) then
         -- make the beef packet invisible
-        cheese.isVisible = false
+        flourBag.isVisible = false
 
         -- make the beef visible over top of the tacoShell
-        shreddedcheese.isVisible = true
+        flour.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
@@ -358,14 +423,14 @@ local function CheeseButton()
 end
 
 -- Creating Transition to help Screen
-local function lettuceButton()
+local function SugarButton()
     -- show overlay with math question
     if (correctfood == 2) then
         -- make the beef packet invisible
-        lettuce.isVisible = false
+        sugarBag.isVisible = false
 
         -- make the beef visible over top of the tacoShell
-        lettuceShredded.isVisible = true
+        sugar.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
 
@@ -401,7 +466,136 @@ local function lettuceButton()
 end
 
 -- Creating Transition to help Screen
-local function CarrotButton()
+local function VanillaButton()
+    -- show overlay with math question
+    if (correctfood == 2) then
+        -- make the beef packet invisible
+        vanillaExtract.isVisible = false
+
+        -- make the beef visible over top of the tacoShell
+        vanilla.isVisible = true
+
+        timer.performWithDelay(1000, HideCorrect)
+
+        -- adding to the score
+        correctfood = correctfood  + 1 
+
+        -- show overlay with question
+        composer.showOverlay( "L2question3", { isModal = true, effect = "fade", time = 100})
+    else
+        incorrectObject3.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
+        lives = lives - 1
+        
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+    end
+end
+
+-- Creating Transition to help Screen
+local function MilkButton()
+    -- show overlay with math question
+    if (correctfood == 2) then
+        -- make the beef packet invisible
+        milkCarton.isVisible = false
+
+        -- make the beef visible over top of the tacoShell
+        milk.isVisible = true
+
+        timer.performWithDelay(1000, HideCorrect)
+
+        -- adding to the score
+        correctfood = correctfood  + 1 
+
+        -- show overlay with question
+        composer.showOverlay( "L2question3", { isModal = true, effect = "fade", time = 100})
+    else
+        incorrectObject3.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
+        lives = lives - 1
+        
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+    end
+end
+
+-- Creating Transition to help Screen
+local function ButterButton()
+    -- show overlay with math question
+    if (correctfood == 2) then
+        -- make the beef packet invisible
+        butterBlock.isVisible = false
+
+        -- make the beef visible over top of the tacoShell
+        butter.isVisible = true
+
+        timer.performWithDelay(1000, HideCorrect)
+
+        -- adding to the score
+        correctfood = correctfood  + 1 
+
+        -- show overlay with question
+        composer.showOverlay( "L2question3", { isModal = true, effect = "fade", time = 100})
+    else
+        incorrectObject3.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
+        lives = lives - 1
+        
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+    end
+end
+
+-- Creating Transition to help Screen
+local function LettuceButton()
     incorrectObject2.isVisible = true
     timer.performWithDelay(1000, HideIncorrect)
     -- show overlay with math question
@@ -428,38 +622,12 @@ local function CarrotButton()
 end
 
 -- Creating Transition to help Screen
-local function StrawberryButton()
+local function CheeseButton()
 
     incorrectObject3.isVisible = true
     timer.performWithDelay(1000, HideIncorrect)
     -- show overlay with math question
     lives = lives - 1
-    
-    if (lives == 3) then
-        hat1.isVisible = true
-        hat2.isVisible = true
-        hat3.isVisible = true
-    elseif (lives == 2) then
-        hat1.isVisible = true
-        hat2.isVisible = true
-        hat3.isVisible = false
-    elseif (lives == 1) then
-        hat1.isVisible = true
-        hat2.isVisible = false
-        hat3.isVisible = false
-    elseif (lives == 0) then
-        hat1.isVisible = false
-        hat2.isVisible = false
-        hat3.isVisible = false
-        timer.performWithDelay(200, YouLoseTransition)
-    end
-end
--- Creating Transition to help Screen
-local function ChocolateButton()
-    incorrectObject2.isVisible = true
-    timer.performWithDelay(1500, HideIncorrect)
-
-    lives = lives - 1    
     
     if (lives == 3) then
         hat1.isVisible = true
@@ -524,40 +692,51 @@ function scene:create( event )
     bkg_image.height = display.contentHeight
 
     -- Insert the image
-    tacoShelldough = display.newImageRect("L2images/tacoShell.png", 350, 350 )
-    tacoShelldough.x = display.contentCenterX
-    tacoShelldough.y = display.contentCenterY/1.2
-
-    -- Insert the image
-    tacoShell= display.newImageRect("L2images/tacoShell.png", 350, 350 )
-    tacoShell.x = display.contentCenterX
-    tacoShell.y = display.contentCenterY/1.2
-    tacoShell.isVisible = false
+    bowl = display.newImageRect("L2images/tacoShell.png", 350, 350 )
+    bowl.x = display.contentCenterX
+    bowl.y = display.contentCenterY/1.2
 
     -- Insert the image
     goal = display.newImageRect("L2images/tacoShell.png", 350, 350 )
     goal.x = display.contentWidth - 965
     goal.y = display.contentCenterY/1.8
     goal:scale (0.3, 0.3)
+
+    -- Insert the image
+    vanilla = display.newImageRect("L2images/vanilla.png", 350, 350 )
+    vanilla.x = display.contentCenterX
+    vanilla.y = display.contentCenterY/1.2
+    vanilla.isVisible = false
+
+    -- Insert the image
+    eggYolk = display.newImageRect("L2images/eggYolk.png", 350, 350 )
+    eggYolk.x = display.contentCenterX
+    eggYolk.y = display.contentCenterY/1.2
+    eggYolk.isVisible = false
+
+    -- Insert the image
+    butter = display.newImageRect("L2images/butter.png", 350, 350 )
+    butter.x = display.contentCenterX
+    butter.y = display.contentCenterY/1.2
+    butter.isVisible = false
+
+    -- Insert the image
+    sugar = display.newImageRect("L2images/sugar.png", 350, 350 )
+    sugar.x = display.contentCenterX
+    sugar.y = display.contentCenterY/1.2
+    sugar.isVisible = false
     
-
     -- Insert the image
-    beef = display.newImageRect("L2images/beef.png", 350, 350 )
-    beef.x = display.contentCenterX
-    beef.y = display.contentCenterY/1.2
-    beef.isVisible = false
-
+    flour = display.newImageRect("L2images/flour.png", 350, 350 )
+    flour.x = display.contentCenterX
+    flour.y = display.contentCenterY/1.2
+    flour.isVisible = false
+    
     -- Insert the image
-    shreddedcheese = display.newImageRect("L2images/shreddedcheese.png", 350, 350 )
-    shreddedcheese.x = display.contentCenterX
-    shreddedcheese.y = display.contentCenterY/1.2
-    shreddedcheese.isVisible = false
-
-    -- Insert the image
-    lettuceShredded = display.newImageRect("L2images/lettuceShredded.png", 350, 350 )
-    lettuceShredded.x = display.contentCenterX
-    lettuceShredded.y = display.contentCenterY/1.2
-    lettuceShredded.isVisible = false
+    milk = display.newImageRect("L2images/milk.png", 350, 350 )
+    milk.x = display.contentCenterX
+    milk.y = display.contentCenterY/1.2
+    milk.isVisible = false
     
 
     level1text = display.newImageRect("L1images/level1text.png", 450, 195)
@@ -612,25 +791,9 @@ function scene:create( event )
     hat1.y = display.contentHeight *0.1
 
 
-    -- Creating pause Button
-    carrot = widget.newButton( 
-        {   
-            -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.6,
-            y = display.contentCenterY/2*3.3,
-
-            -- Insert the images here
-            defaultFile = "L1images/carrot.png",
-            overFile = "L1images/carrot.png",
-
-
-
-            -- When the button is released, call the Level1 screen transition function
-            onRelease = StrawberryButton          
-        } )
 
     -- Creating pause Button
-    chocolate = widget.newButton( 
+    butterBlock = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
             x = display.contentCenterX*1.5,
@@ -648,7 +811,7 @@ function scene:create( event )
 
 
     -- Creating pause Button
-    strawberry = widget.newButton( 
+    flourBag = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
             x = display.contentCenterX*.445,
@@ -663,6 +826,76 @@ function scene:create( event )
             -- When the button is released, call the Level1 screen transition function
             onRelease = StrawberryButton          
         } )
+
+
+    -- Creating pause Button
+    sugarBag = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.445,
+            y = display.contentCenterY/2*3.72,
+
+            -- Insert the images here
+            defaultFile = "L1images/Strawberry.png",
+            overFile = "L1images/Strawberry.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = StrawberryButton          
+        } )
+
+    -- Creating pause Button
+    milkCarton = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.445,
+            y = display.contentCenterY/2*3.72,
+
+            -- Insert the images here
+            defaultFile = "L1images/Strawberry.png",
+            overFile = "L1images/Strawberry.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = StrawberryButton          
+        } )
+
+    -- Creating pause Button
+    egg = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.445,
+            y = display.contentCenterY/2*3.72,
+
+            -- Insert the images here
+            defaultFile = "L1images/Strawberry.png",
+            overFile = "L1images/Strawberry.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = StrawberryButton          
+        } )
+
+    -- Creating pause Button
+    vanillaExtract = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.445,
+            y = display.contentCenterY/2*3.72,
+
+            -- Insert the images here
+            defaultFile = "L1images/Strawberry.png",
+            overFile = "L1images/Strawberry.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = StrawberryButton          
+        } )
+
 
     -- Creating pause Button
     tomato = widget.newButton( 
@@ -716,7 +949,7 @@ function scene:create( event )
         } )
 
     -- Creating pause Button
-    cook = widget.newButton( 
+    mix = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
             x = display.contentCenterX*.17,
@@ -730,23 +963,6 @@ function scene:create( event )
 
             -- When the button is released, call the Level1 screen transition function
             onRelease = CookButton          
-        } )
-
-    -- Creating pause Button
-    beefBowl = widget.newButton( 
-        {   
-            -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.8,
-            y = display.contentCenterY/2*3.72,
-
-            -- Insert the images here
-            defaultFile = "L2images/beefBowl.png",
-            overFile = "L2images/beefBowl.png",
-
-
-
-            -- When the button is released, call the Level1 screen transition function
-            onRelease = beefBowlButton          
         } )
 
     -- Creating pause Button
@@ -790,19 +1006,26 @@ function scene:create( event )
 
         -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image )
-    sceneGroup:insert( tacoShelldough )
-    sceneGroup:insert( tacoShell)
+    sceneGroup:insert( bowl )
+    sceneGroup:insert( milkCarton)
     sceneGroup:insert( strawberry )   
+    sceneGroup:insert( milk)
+    sceneGroup:insert( sugarBag)
+    sceneGroup:insert( sugar)
+    sceneGroup:insert( flour)
+    sceneGroup:insert( flourBag)
+    sceneGroup:insert( butter)
+    sceneGroup:insert( butterBlock)
+    sceneGroup:insert( egg)
+    sceneGroup:insert( eggYolk)
     sceneGroup:insert( beefBowl )
     sceneGroup:insert( chocolate )
-    sceneGroup:insert( carrot )
     sceneGroup:insert( lettuce )
     sceneGroup:insert( cheese )
     sceneGroup:insert( tomato )
     sceneGroup:insert( Pause )
     sceneGroup:insert( level1text ) 
     sceneGroup:insert( HowTo )
-    sceneGroup:insert( beef )
     sceneGroup:insert( shreddedcheese )
     sceneGroup:insert( lettuceShredded )
     sceneGroup:insert( cook )
