@@ -50,8 +50,11 @@ local goal
 local tomato
 local mix
 local batter
+local cake
+local icing 
+local icedCake
 -- text for level1
-local level1text
+local level3text
 local lives = 3
 local points = 0
 local correctfood = 0
@@ -303,12 +306,9 @@ local function BakeButton()
     -- show overlay with math question
     if (correctfood == 3) then
 
-        tacoShell.isVisible = true
-        -- make the beef visible over top of the tacoShell
-        beef.isVisible = false
-        shreddedcheese.isVisible = false
-        lettuceShredded.isVisible = false
-        tacoShelldough.isVisible = false
+        cake.isVisible = true
+        -- make the batter invisible
+        batter.isVisible = false
 
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
@@ -349,6 +349,48 @@ local function EggButton()
 
         -- make the beef visible over top of the tacoShell
         eggYolk.isVisible = true
+
+        timer.performWithDelay(1000, HideCorrect)
+        -- adding to the score
+        correctfood = correctfood  + 1 
+        -- show overlay with math question
+        composer.showOverlay( "L2question2", { isModal = true, effect = "fade", time = 100})
+
+    else
+        incorrectObject1.isVisible = true
+        timer.performWithDelay(1000, HideIncorrect)
+        lives = lives - 1
+        
+        if (lives == 3) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = true
+    elseif (lives == 2) then
+        hat1.isVisible = true
+        hat2.isVisible = true
+        hat3.isVisible = false
+    elseif (lives == 1) then
+        hat1.isVisible = true
+        hat2.isVisible = false
+        hat3.isVisible = false
+    elseif (lives == 0) then
+        hat1.isVisible = false
+        hat2.isVisible = false
+        hat3.isVisible = false
+        timer.performWithDelay(200, YouLoseTransition)
+    end
+    end
+end
+
+-- Creating Transition to help Screen
+local function IceingButton()
+    -- show overlay with math question
+    if (correctfood == 0) then
+        -- make the beef packet invisible
+        cake.isVisible = false
+
+        -- make the beef visible over top of the tacoShell
+        icedCake.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
@@ -706,47 +748,47 @@ function scene:create( event )
     goal:scale (0.3, 0.3)
 
     -- Insert the image
-    vanilla = display.newImageRect("L2images/vanilla.png", 350, 350 )
+    vanilla = display.newImageRect("L3images/vanillaExtract.png", 350, 350 )
     vanilla.x = display.contentCenterX
     vanilla.y = display.contentCenterY/1.2
     vanilla.isVisible = false
 
     -- Insert the image
-    eggYolk = display.newImageRect("L2images/eggYolk.png", 350, 350 )
+    eggYolk = display.newImageRect("L3images/egg@2x.png", 350, 350 )
     eggYolk.x = display.contentCenterX
     eggYolk.y = display.contentCenterY/1.2
     eggYolk.isVisible = false
 
     -- Insert the image
-    butter = display.newImageRect("L2images/butter.png", 350, 350 )
+    butter = display.newImageRect("L3images/butter@2x.png", 350, 350 )
     butter.x = display.contentCenterX
     butter.y = display.contentCenterY/1.2
     butter.isVisible = false
 
     -- Insert the image
-    sugar = display.newImageRect("L2images/sugar.png", 350, 350 )
+    sugar = display.newImageRect("L3images/sugarbag.png", 350, 350 )
     sugar.x = display.contentCenterX
     sugar.y = display.contentCenterY/1.2
     sugar.isVisible = false
     
     -- Insert the image
-    flour = display.newImageRect("L2images/flour.png", 350, 350 )
+    flour = display.newImageRect("L3images/flourbag@2x.png", 350, 350 )
     flour.x = display.contentCenterX
     flour.y = display.contentCenterY/1.2
     flour.isVisible = false
     
     -- Insert the image
-    milk = display.newImageRect("L2images/milk.png", 350, 350 )
+    milk = display.newImageRect("L3images/milkCarton.png", 350, 350 )
     milk.x = display.contentCenterX
     milk.y = display.contentCenterY/1.2
     milk.isVisible = false
     
 
-    level1text = display.newImageRect("L1images/level1text.png", 450, 195)
+    level3text = display.newImageRect("L3images/level3text.png", 450, 195)
     
     --set the initial x and y position of the text
-    level1text.x = 500
-    level1text.y = display.contentCenterY/6
+    level3text.x = 500
+    level3text.y = display.contentCenterY/6
 
     --Create the correct text object and make it invisible
     correctObject1 = display.newText( "That's good!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
@@ -803,13 +845,31 @@ function scene:create( event )
             y = display.contentCenterY/2*3.3,
 
             -- Insert the images here
-            defaultFile = "L3images/butterBlock.png",
+            defaultFile = "L3images/butter@2x.png",
+            overFile = "L3images/butter@2x.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = ButterButton          
+        } )
+
+
+    -- Creating pause Button
+    icing = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*1.5,
+            y = display.contentCenterY/2*3.3,
+
+            -- Insert the images here
+            defaultFile = "L3images/bu.png",
             overFile = "L3images/butterBlock.png",
 
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = ChocolateButton          
+            onRelease = IceingButton         
         } )
 
 
@@ -827,7 +887,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = StrawberryButton          
+            onRelease = FlourButton          
         } )
 
 
@@ -845,7 +905,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = StrawberryButton          
+            onRelease = SugarButton          
         } )
 
     -- Creating pause Button
@@ -862,7 +922,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = StrawberryButton          
+            onRelease = MilkButton          
         } )
 
     -- Creating pause Button
@@ -879,7 +939,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = StrawberryButton          
+            onRelease = EggButton          
         } )
 
     -- Creating pause Button
@@ -896,7 +956,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = StrawberryButton          
+            onRelease = VanillaButton          
         } )
 
 
@@ -965,7 +1025,7 @@ function scene:create( event )
 
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = CookButton          
+            onRelease = MixButton          
         } )
 
     -- Creating pause Button
@@ -1026,7 +1086,7 @@ function scene:create( event )
     sceneGroup:insert( cheese )
     sceneGroup:insert( tomato )
     sceneGroup:insert( Pause )
-    sceneGroup:insert( level1text ) 
+    sceneGroup:insert( level3text ) 
     sceneGroup:insert( HowTo )
     sceneGroup:insert( shreddedcheese )
     sceneGroup:insert( lettuceShredded )
@@ -1069,14 +1129,14 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
-        local function MoveLevel1Text(event)
+        local function MoveLevel3Text(event)
 
             -- change the transparency of the text so that it fades out
-            level1text.alpha = level1text.alpha - 0.0005
+            level3text.alpha = level3text.alpha - 0.0005
         end
 
         -- MoveLevel1Text will be called over and over again
-        Runtime:addEventListener("enterFrame", MoveLevel1Text)
+        Runtime:addEventListener("enterFrame", MoveLevel3Text)
 
         RestartLevel3()
     end

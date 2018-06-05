@@ -50,7 +50,7 @@ local lettuceShredded
 local tacoShell
 local goal
 -- text for level1
-local level1text
+local level2text
 local lives = 3
 local points = 0
 local correctfood = 0
@@ -561,11 +561,11 @@ function scene:create( event )
     salsa.isVisible = false
     
 
-    level1text = display.newImageRect("L1images/level1text.png", 450, 195)
+    level2text = display.newImageRect("L2images/level2text.png", 450, 195)
     
     --set the initial x and y position of the text
-    level1text.x = 500
-    level1text.y = display.contentCenterY/6
+    level2text.x = 500
+    level2text.y = display.contentCenterY/6
 
     --Create the correct text object and make it invisible
     correctObject1 = display.newText( "That's good!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
@@ -802,7 +802,7 @@ function scene:create( event )
     sceneGroup:insert( salsa )
     sceneGroup:insert( tomato )
     sceneGroup:insert( Pause )
-    sceneGroup:insert( level1text ) 
+    sceneGroup:insert( level2text ) 
     sceneGroup:insert( HowTo )
     sceneGroup:insert( beef )
     sceneGroup:insert( shreddedcheese )
@@ -844,14 +844,14 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
-        local function MoveLevel1Text(event)
+        local function MoveLevel2Text(event)
 
             -- change the transparency of the text so that it fades out
-            level1text.alpha = level1text.alpha - 0.0005
+            level2text.alpha = level2text.alpha - 0.0005
         end
 
-        -- MoveLevel1Text will be called over and over again
-        Runtime:addEventListener("enterFrame", MoveLevel1Text)
+        -- MoveLevel2Text will be called over and over again
+        Runtime:addEventListener("enterFrame", MoveLevel2Text)
 
         RestartLevel2()
 
