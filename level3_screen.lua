@@ -736,9 +736,9 @@ function scene:create( event )
     bkg_image.height = display.contentHeight
 
     -- Insert the image
-    bowl = display.newImageRect("L2images/tacoShell.png", 350, 350 )
+    bowl = display.newImageRect("L3images/bowl.png", 350, 350 )
     bowl.x = display.contentCenterX
-    bowl.y = display.contentCenterY/1.2
+    bowl.y = display.contentCenterY*1.4
 
 
 
@@ -751,37 +751,37 @@ function scene:create( event )
     -- Insert the image
     vanilla = display.newImageRect("L3images/vanillaExtract.png", 350, 350 )
     vanilla.x = display.contentCenterX
-    vanilla.y = display.contentCenterY/1.2
+    vanilla.y = display.contentCenterY*1.4
     vanilla.isVisible = false
 
     -- Insert the image
-    eggYolk = display.newImageRect("L3images/egg@2x.png", 350, 350 )
+    eggYolk = display.newImageRect("L3images/egg.png", 350, 350 )
     eggYolk.x = display.contentCenterX
-    eggYolk.y = display.contentCenterY/1.2
+    eggYolk.y = display.contentCenterY*1.4
     eggYolk.isVisible = false
 
     -- Insert the image
     butter = display.newImageRect("L3images/butter.png", 350, 350 )
     butter.x = display.contentCenterX
-    butter.y = display.contentCenterY/1.2
+    butter.y = display.contentCenterY*1.4
     butter.isVisible = false
 
     -- Insert the image
     sugar = display.newImageRect("L3images/sugarbag.png", 350, 350 )
     sugar.x = display.contentCenterX
-    sugar.y = display.contentCenterY/1.2
+    sugar.y = display.contentCenterY*1.4
     sugar.isVisible = false
     
     -- Insert the image
-    flour = display.newImageRect("L3images/flourbag@2x.png", 350, 350 )
+    flour = display.newImageRect("L3images/flourbag.png", 350, 350 )
     flour.x = display.contentCenterX
-    flour.y = display.contentCenterY/1.2
+    flour.y = display.contentCenterY*1.4
     flour.isVisible = false
     
     -- Insert the image
     milk = display.newImageRect("L3images/milkCarton.png", 350, 350 )
     milk.x = display.contentCenterX
-    milk.y = display.contentCenterY/1.2
+    milk.y = display.contentCenterY*1.4
     milk.isVisible = false
     
 
@@ -842,8 +842,8 @@ function scene:create( event )
     butterBlock = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*1.5,
-            y = display.contentCenterY/2*3.3,
+            x = display.contentCenterX*1.55,
+            y = display.contentCenterY/2*2.8,
 
             -- Insert the images here
             defaultFile = "L3images/butter.png",
@@ -882,8 +882,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L3images/flourbag@2x.png",
-            overFile = "L3images/flourbag@2x.png",
+            defaultFile = "L3images/flourbag.png",
+            overFile = "L3images/flourbag.png",
 
 
 
@@ -934,8 +934,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L3images/egg@2x.png",
-            overFile = "L3images/egg@2x.png",
+            defaultFile = "L3images/egg.png",
+            overFile = "L3images/egg.png",
 
 
 
@@ -947,8 +947,8 @@ function scene:create( event )
     vanillaExtract = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*.445,
-            y = display.contentCenterY/2*3.72,
+            x = display.contentCenterX*2/25,
+            y = display.contentCenterY/2*2.3,
 
             -- Insert the images here
             defaultFile = "L3images/vanillaExtract.png",
@@ -966,7 +966,7 @@ function scene:create( event )
         {   
             -- Set its position on the screen relative to the screen size
             x = display.contentCenterX*1.3,
-            y = display.contentCenterY/2*3.72,
+            y = display.contentCenterY/2*3.2,
 
             -- Insert the images here
             defaultFile = "L1images/tomato.png",
@@ -1050,8 +1050,8 @@ function scene:create( event )
     cheese = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*1.6,
-            y = display.contentCenterY/2*3.72,
+            x = display.contentCenterX/1.6,
+            y = display.contentCenterY/2*2.9,
 
             -- Insert the images here
             defaultFile = "L1images/Cheese.png",
@@ -1067,8 +1067,8 @@ function scene:create( event )
     lettuce = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
-            x = display.contentCenterX*1.09,
-            y = display.contentCenterY/2*3.3,
+            x = display.contentCenterX*1.9,
+            y = display.contentCenterY/2*2.9,
 
             -- Insert the images here
             defaultFile = "L2images/lettuce.png",
