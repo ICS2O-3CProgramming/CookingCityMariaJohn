@@ -168,21 +168,35 @@ function L3WrongAnswer2()
     
     incorrectObject2.isVisible = true
     
-    if (points == 3) then
-        
+    if (points == 8) then
         timer.performWithDelay(1000, YouWinTransition)
     
-    elseif (points == 2) then  
+    elseif (points == 7) then  
         timer.performWithDelay(1000, YouWinTransition)
 
+    elseif (points == 6) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    elseif (points == 5) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    elseif (points == 4) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    elseif (points == 3) then  
+        timer.performWithDelay(1000, YouLoseTransition)
+    
+    elseif (points == 2) then
+
+        timer.performWithDelay(200, YouLoseTransition)
+
+    elseif (points == 1) then  
+        timer.performWithDelay(1000, YouLoseTransition)
     
     elseif (points == 1) then
 
         timer.performWithDelay(200, YouLoseTransition)
-    
-    elseif (points == 0) then
 
-        timer.performWithDelay(200, YouLoseTransition)
     end
 
     if (lives == 3) then
@@ -212,7 +226,7 @@ function L3RightAnswer()
     -- show overlay with math question
     points = points + 1
     
-    if (points == 3) then
+    if (points == 8) then
 
         timer.performWithDelay(1000, YouWinTransition)
     end
@@ -225,19 +239,32 @@ function L3RightAnswer2()
     -- show overlay with math question
     points = points + 1
     
-    if (points == 3) then
-        
+    if (points == 8) then
         timer.performWithDelay(1000, YouWinTransition)
     
-    elseif (points == 2) then  
+    elseif (points == 7) then  
         timer.performWithDelay(1000, YouWinTransition)
 
+    elseif (points == 6) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    elseif (points == 5) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    elseif (points == 4) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
+    elseif (points == 3) then  
+        timer.performWithDelay(1000, YouLoseTransition)
+    
+    elseif (points == 2) then
+
+        timer.performWithDelay(200, YouLoseTransition)
+
+    elseif (points == 1) then  
+        timer.performWithDelay(1000, YouLoseTransition)
     
     elseif (points == 1) then
-
-        timer.performWithDelay(200, YouWinTransition)
-    
-    elseif (points == 0) then
 
         timer.performWithDelay(200, YouLoseTransition)
 
@@ -259,7 +286,7 @@ end
 -- Creating Transition to help Screen
 local function MixButton()
     -- show overlay with math question
-    if (correctfood == 3) then
+    if (correctfood == 5) then
 
         batter.isVisible = true
         -- make the beef visible over top of the cake
@@ -303,7 +330,7 @@ end
 -- Creating Transition to help Screen
 local function BakeButton()
     -- show overlay with math question
-    if (correctfood == 3) then
+    if (correctfood == 6) then
 
         cake.isVisible = true
         -- make the batter invisible
@@ -384,7 +411,7 @@ end
 -- Creating Transition to help Screen
 local function IceingButton()
     -- show overlay with math question
-    if (correctfood == 0) then
+    if (correctfood == 7) then
         -- make the beef packet invisible
         cake.isVisible = false
 
@@ -512,7 +539,7 @@ end
 -- Creating Transition to help Screen
 local function VanillaButton()
     -- show overlay with math question
-    if (correctfood == 2) then
+    if (correctfood == 4) then
         -- make the beef packet invisible
         vanillaExtract.isVisible = false
 
@@ -555,7 +582,7 @@ end
 -- Creating Transition to help Screen
 local function MilkButton()
     -- show overlay with math question
-    if (correctfood == 2) then
+    if (correctfood == 3) then
         -- make the beef packet invisible
         milkCarton.isVisible = false
 
@@ -598,7 +625,7 @@ end
 -- Creating Transition to help Screen
 local function ButterButton()
     -- show overlay with math question
-    if (correctfood == 2) then
+    if (correctfood == 0) then
         -- make the beef packet invisible
         butterBlock.isVisible = false
 
@@ -738,13 +765,7 @@ function scene:create( event )
     -- Insert the image
     bowl = display.newImageRect("L3images/bowl.png", 350, 350 )
     bowl.x = display.contentCenterX
-    bowl.y = display.contentCenterY*1.4
-<<<<<<< HEAD
-=======
-    bowl.y = display.contentCenterY/0.96
-
-
->>>>>>> ea419ddb3a7995fa993b1beb7abcda07bd50d311
+    bowl.y = display.contentCenterY*1.2
 
     -- Insert the image
     goal = display.newImageRect("L3images/cake.png", 275, 275 )
