@@ -761,7 +761,7 @@ function scene:create( event )
     eggYolk.isVisible = false
 
     -- Insert the image
-    butter = display.newImageRect("L3images/butter@2x.png", 350, 350 )
+    butter = display.newImageRect("L3images/butter.png", 350, 350 )
     butter.x = display.contentCenterX
     butter.y = display.contentCenterY/1.2
     butter.isVisible = false
@@ -846,8 +846,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.3,
 
             -- Insert the images here
-            defaultFile = "L3images/butter@2x.png",
-            overFile = "L3images/butter@2x.png",
+            defaultFile = "L3images/butter.png",
+            overFile = "L3images/butter.png",
 
 
 
@@ -864,8 +864,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.3,
 
             -- Insert the images here
-            defaultFile = "L3images/butter@2x.png",
-            overFile = "L3images/butter@2x.png",
+            defaultFile = "L3images/butter.png",
+            overFile = "L3images/butter.png",
 
 
 
