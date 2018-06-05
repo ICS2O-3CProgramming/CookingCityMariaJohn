@@ -262,7 +262,7 @@ local function MixButton()
     if (correctfood == 3) then
 
         batter.isVisible = true
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         eggYolk.isVisible = false
         milk.isVisible = false
         sugar.isVisible = false
@@ -346,7 +346,7 @@ local function EggButton()
         -- make the beef packet invisible
         egg.isVisible = false
 
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         eggYolk.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
@@ -388,7 +388,7 @@ local function IceingButton()
         -- make the beef packet invisible
         cake.isVisible = false
 
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         icedCake.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
@@ -432,7 +432,7 @@ local function FlourButton()
         -- make the beef packet invisible
         flourBag.isVisible = false
 
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         flour.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
@@ -473,7 +473,7 @@ local function SugarButton()
         -- make the beef packet invisible
         sugarBag.isVisible = false
 
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         sugar.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
@@ -516,7 +516,7 @@ local function VanillaButton()
         -- make the beef packet invisible
         vanillaExtract.isVisible = false
 
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         vanilla.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
@@ -559,7 +559,7 @@ local function MilkButton()
         -- make the beef packet invisible
         milkCarton.isVisible = false
 
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         milk.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
@@ -602,7 +602,7 @@ local function ButterButton()
         -- make the beef packet invisible
         butterBlock.isVisible = false
 
-        -- make the beef visible over top of the tacoShell
+        -- make the beef visible over top of the cake
         butter.isVisible = true
 
         timer.performWithDelay(1000, HideCorrect)
@@ -736,15 +736,15 @@ function scene:create( event )
     bkg_image.height = display.contentHeight
 
     -- Insert the image
-    bowl = display.newImageRect("L2images/tacoShell.png", 350, 350 )
+    bowl = display.newImageRect("L3images/bowl.png", 350, 350 )
     bowl.x = display.contentCenterX
-    bowl.y = display.contentCenterY/1.2
+    bowl.y = display.contentCenterY/0.96
 
 
 
     -- Insert the image
-    goal = display.newImageRect("L2images/tacoShell.png", 350, 350 )
-    goal.x = display.contentWidth - 965
+    goal = display.newImageRect("L3images/cake.png", 275, 275 )
+    goal.x = display.contentWidth - 980
     goal.y = display.contentCenterY/1.4
     goal:scale (0.3, 0.3)
 
