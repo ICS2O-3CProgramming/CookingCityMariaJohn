@@ -45,7 +45,7 @@ local vanilla
 local flour
 local sugar
 local butter
-local eggYolk
+local eggYolkz
 local goal
 local tomato
 local mix
@@ -703,7 +703,7 @@ function scene:create( event )
     goal:scale (0.3, 0.3)
 
     -- Insert the image
-    vanilla = display.newImageRect("L2images/vanilla.png", 350, 350 )
+    vanilla = display.newImageRect("L3images/vanillaExtract.png", 350, 350 )
     vanilla.x = display.contentCenterX
     vanilla.y = display.contentCenterY/1.2
     vanilla.isVisible = false
