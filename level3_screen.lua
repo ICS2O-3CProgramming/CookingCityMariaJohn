@@ -70,8 +70,8 @@ local hat1
 local hat2
 local hat3
 
-local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
-local bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
+--local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
+--local bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -253,7 +253,7 @@ end
 -- Creating Transition to help Screen
 local function HowToScreen( )
     -- show overlay with math question
-    composer.showOverlay( "howto_screen", { isModal = true, effect = "fade", time = 100})
+    composer.showOverlay( "howto_screen3", { isModal = true, effect = "fade", time = 100})
 end 
 
 -- Creating Transition to help Screen
@@ -740,12 +740,12 @@ function scene:create( event )
     bowl.x = display.contentCenterX
     bowl.y = display.contentCenterY/1.2
 
-    
+
 
     -- Insert the image
     goal = display.newImageRect("L2images/tacoShell.png", 350, 350 )
     goal.x = display.contentWidth - 965
-    goal.y = display.contentCenterY/1.8
+    goal.y = display.contentCenterY/1.4
     goal:scale (0.3, 0.3)
 
     -- Insert the image
@@ -824,17 +824,17 @@ function scene:create( event )
     incorrectObject4.isVisible = false
 
     hat3 = display.newImageRect("L1images/Hat.png", 100, 100)
-    hat3.x = display.contentWidth*0.22
-    hat3.y = display.contentHeight *0.37
+    hat3.x = display.contentWidth*0.23
+    hat3.y = display.contentHeight *0.06
 
 
     hat2 = display.newImageRect("L1images/Hat.png", 100, 100)
-    hat2.x = display.contentWidth*0.22
-    hat2.y = display.contentHeight *0.23
+    hat2.x = display.contentWidth*0.05
+    hat2.y = display.contentHeight *0.06
 
     hat1 = display.newImageRect("L1images/Hat.png", 100, 100)
-    hat1.x = display.contentWidth*0.22
-    hat1.y = display.contentHeight *0.1
+    hat1.x = display.contentWidth*0.14
+    hat1.y = display.contentHeight *0.06
 
 
 
@@ -1020,8 +1020,8 @@ function scene:create( event )
             y = display.contentHeight-35,
 
             -- Insert the images here
-            defaultFile = "L1images/cookbutton.png",
-            overFile = "L1images/cookbuttonpressed.png",
+            defaultFile = "L3images/mixbutton.png",
+            overFile = "L3images/mixbuttonpressed.png",
 
 
 
@@ -1037,8 +1037,8 @@ function scene:create( event )
             y = display.contentHeight-35,
 
             -- Insert the images here
-            defaultFile = "L1images/cookbutton.png",
-            overFile = "L1images/cookbuttonpressed.png",
+            defaultFile = "L3images/bakebutton.png",
+            overFile = "L3images/bakebuttonpressed.png",
 
 
 
