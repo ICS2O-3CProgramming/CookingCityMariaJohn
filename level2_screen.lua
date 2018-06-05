@@ -252,7 +252,7 @@ end
 -- Creating Transition to help Screen
 local function HowToScreen( )
     -- show overlay with math question
-    composer.showOverlay( "howto_screen", { isModal = true, effect = "fade", time = 100})
+    composer.showOverlay( "howto_screen2", { isModal = true, effect = "fade", time = 100})
 end 
 
 
