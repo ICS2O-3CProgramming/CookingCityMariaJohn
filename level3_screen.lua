@@ -738,11 +738,8 @@ function scene:create( event )
     -- Insert the image
     bowl = display.newImageRect("L3images/bowl.png", 350, 350 )
     bowl.x = display.contentCenterX
-<<<<<<< HEAD
     bowl.y = display.contentCenterY*1.4
-=======
     bowl.y = display.contentCenterY/0.96
->>>>>>> 7ed051db895c030aa6c275ca68a75bb67c6f4eaa
 
 
 
@@ -753,7 +750,7 @@ function scene:create( event )
     goal:scale (0.3, 0.3)
 
     -- Insert the image
-    vanilla = display.newImageRect("L3images/vanillaExtract.png", 350, 350 )
+    vanilla = display.newImageRect("L3images/vanillabowl.png", 350, 350 )
     vanilla.x = display.contentCenterX
     vanilla.y = display.contentCenterY*1.4
     vanilla.isVisible = false
@@ -930,7 +927,7 @@ function scene:create( event )
             onRelease = MilkButton          
         } )
 
-    -- Creating pause Button
+    -- Creating egg
     egg = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
@@ -947,7 +944,7 @@ function scene:create( event )
             onRelease = EggButton          
         } )
 
-    -- Creating pause Button
+    -- Creating vanilla
     vanillaExtract = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
@@ -965,7 +962,7 @@ function scene:create( event )
         } )
 
 
-    -- Creating pause Button
+    -- Creating tomato
     tomato = widget.newButton( 
         {   
             -- Set its position on the screen relative to the screen size
