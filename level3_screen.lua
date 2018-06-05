@@ -49,6 +49,7 @@ local eggYolk
 local goal
 local tomato
 local mix
+local batter
 -- text for level1
 local level1text
 local lives = 3
@@ -258,12 +259,14 @@ local function MixButton()
     -- show overlay with math question
     if (correctfood == 3) then
 
-        tacoShell.isVisible = true
+        batter.isVisible = true
         -- make the beef visible over top of the tacoShell
-        beef.isVisible = false
-        shreddedcheese.isVisible = false
-        lettuceShredded.isVisible = false
-        tacoShelldough.isVisible = false
+        eggYolk.isVisible = false
+        milk.isVisible = false
+        sugar.isVisible = false
+        flour.isVisible = false
+        vanilla.isVisible = false
+        butter.isVisible = false
 
         timer.performWithDelay(1000, HideCorrect)
         -- adding to the score
@@ -1007,8 +1010,7 @@ function scene:create( event )
         -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image )
     sceneGroup:insert( bowl )
-    sceneGroup:insert( milkCarton)
-    sceneGroup:insert( strawberry )   
+    sceneGroup:insert( milkCarton) 
     sceneGroup:insert( milk)
     sceneGroup:insert( sugarBag)
     sceneGroup:insert( sugar)
@@ -1018,8 +1020,6 @@ function scene:create( event )
     sceneGroup:insert( butterBlock)
     sceneGroup:insert( egg)
     sceneGroup:insert( eggYolk)
-    sceneGroup:insert( beefBowl )
-    sceneGroup:insert( chocolate )
     sceneGroup:insert( lettuce )
     sceneGroup:insert( cheese )
     sceneGroup:insert( tomato )
@@ -1028,7 +1028,8 @@ function scene:create( event )
     sceneGroup:insert( HowTo )
     sceneGroup:insert( shreddedcheese )
     sceneGroup:insert( lettuceShredded )
-    sceneGroup:insert( cook )
+    sceneGroup:insert( mix )
+    sceneGroup:insert( bake )
     sceneGroup:insert( goal )
     sceneGroup:insert( hat1 )
     sceneGroup:insert( hat2 )
@@ -1074,6 +1075,8 @@ function scene:show( event )
 
         -- MoveLevel1Text will be called over and over again
         Runtime:addEventListener("enterFrame", MoveLevel1Text)
+
+        RestartLevel3()
     end
 
 end --function scene:show( event )
