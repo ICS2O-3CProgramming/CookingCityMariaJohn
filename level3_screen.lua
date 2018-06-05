@@ -1,5 +1,3 @@
------------------------------------------------------------------------------------------
---
 -- level1_screen.lua
 -- Created by: John N
 -- Date: Month Day, Year
@@ -49,6 +47,7 @@ local eggYolkz
 local goal
 local tomato
 local mix
+local bake
 local batter
 local cake
 local icing 
@@ -730,7 +729,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the image
-    bkg_image = display.newImageRect("Images/level1.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/level3@2x.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -740,6 +739,8 @@ function scene:create( event )
     bowl = display.newImageRect("L2images/tacoShell.png", 350, 350 )
     bowl.x = display.contentCenterX
     bowl.y = display.contentCenterY/1.2
+
+    
 
     -- Insert the image
     goal = display.newImageRect("L2images/tacoShell.png", 350, 350 )
@@ -863,8 +864,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.3,
 
             -- Insert the images here
-            defaultFile = "L3images/bu.png",
-            overFile = "L3images/butterBlock.png",
+            defaultFile = "L3images/butter@2x.png",
+            overFile = "L3images/butter@2x.png",
 
 
 
@@ -881,8 +882,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L3images/flourBag.png",
-            overFile = "L3images/flourBag.png",
+            defaultFile = "L3images/flourbag@2x.png",
+            overFile = "L3images/flourbag@2x.png",
 
 
 
@@ -899,8 +900,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L3images/sugarBag.png",
-            overFile = "L3images/sugarBag.png",
+            defaultFile = "L3images/sugarbag.png",
+            overFile = "L3images/sugarbag.png",
 
 
 
@@ -933,8 +934,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L3images/egg.png",
-            overFile = "L3images/egg.png",
+            defaultFile = "L3images/egg@2x.png",
+            overFile = "L3images/egg@2x.png",
 
 
 
@@ -1019,13 +1020,30 @@ function scene:create( event )
             y = display.contentHeight-35,
 
             -- Insert the images here
-            defaultFile = "L3images/mixbutton.png",
-            overFile = "L3images/mixbuttonpressed.png",
+            defaultFile = "L1images/cookbutton.png",
+            overFile = "L1images/cookbuttonpressed.png",
 
 
 
             -- When the button is released, call the Level1 screen transition function
             onRelease = MixButton          
+        } )
+
+    -- Creating pause Button
+    bake = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentCenterX*.17,
+            y = display.contentHeight-35,
+
+            -- Insert the images here
+            defaultFile = "L1images/cookbutton.png",
+            overFile = "L1images/cookbuttonpressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = BakeButton          
         } )
 
     -- Creating pause Button
@@ -1082,14 +1100,13 @@ function scene:create( event )
     sceneGroup:insert( eggYolk)
     sceneGroup:insert( vanilla)
     sceneGroup:insert( vanillaExtract)
+    sceneGroup:insert( icing)
     sceneGroup:insert( lettuce )
     sceneGroup:insert( cheese )
     sceneGroup:insert( tomato )
     sceneGroup:insert( Pause )
     sceneGroup:insert( level3text ) 
     sceneGroup:insert( HowTo )
-    sceneGroup:insert( shreddedcheese )
-    sceneGroup:insert( lettuceShredded )
     sceneGroup:insert( mix )
     sceneGroup:insert( bake )
     sceneGroup:insert( goal )
