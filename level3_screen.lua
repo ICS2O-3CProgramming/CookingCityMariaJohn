@@ -803,8 +803,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.3,
 
             -- Insert the images here
-            defaultFile = "L1images/Chocolate.png",
-            overFile = "L1images/Chocolate.png",
+            defaultFile = "L3images/butterBlock.png",
+            overFile = "L3images/butterBlock.png",
 
 
 
@@ -821,8 +821,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L1images/Strawberry.png",
-            overFile = "L1images/Strawberry.png",
+            defaultFile = "L3images/flourBag.png",
+            overFile = "L3images/flourBag.png",
 
 
 
@@ -839,8 +839,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L1images/Strawberry.png",
-            overFile = "L1images/Strawberry.png",
+            defaultFile = "L3images/sugarBag.png",
+            overFile = "L3images/sugarBag.png",
 
 
 
@@ -856,8 +856,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L1images/Strawberry.png",
-            overFile = "L1images/Strawberry.png",
+            defaultFile = "L3images/milkCarton.png",
+            overFile = "L3images/milkCarton.png",
 
 
 
@@ -873,8 +873,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L1images/Strawberry.png",
-            overFile = "L1images/Strawberry.png",
+            defaultFile = "L3images/egg.png",
+            overFile = "L3images/egg.png",
 
 
 
@@ -890,8 +890,8 @@ function scene:create( event )
             y = display.contentCenterY/2*3.72,
 
             -- Insert the images here
-            defaultFile = "L1images/Strawberry.png",
-            overFile = "L1images/Strawberry.png",
+            defaultFile = "L3images/vanillaExtract.png",
+            overFile = "L3images/vanillaExtract.png",
 
 
 
@@ -959,8 +959,8 @@ function scene:create( event )
             y = display.contentHeight-35,
 
             -- Insert the images here
-            defaultFile = "L1images/cookbutton.png",
-            overFile = "L1images/cookbuttonpressed.png",
+            defaultFile = "L3images/mixbutton.png",
+            overFile = "L3images/mixbuttonpressed.png",
 
 
 
@@ -1020,6 +1020,8 @@ function scene:create( event )
     sceneGroup:insert( butterBlock)
     sceneGroup:insert( egg)
     sceneGroup:insert( eggYolk)
+    sceneGroup:insert( vanilla)
+    sceneGroup:insert( vanillaExtract)
     sceneGroup:insert( lettuce )
     sceneGroup:insert( cheese )
     sceneGroup:insert( tomato )
