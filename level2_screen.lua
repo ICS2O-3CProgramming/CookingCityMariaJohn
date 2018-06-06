@@ -591,7 +591,7 @@ function scene:create( event )
     incorrectObject2:setTextColor(255/255, 255/255, 0/255)
     incorrectObject2.isVisible = false
 
-    incorrectObject3 = display.newText( "Thats not right!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    incorrectObject3 = display.newText( "That's not right!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
     incorrectObject3:setTextColor(255/255, 255/255, 0/255)
     incorrectObject3.isVisible = false
 
