@@ -132,7 +132,7 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("Coquille de tacos en anglais?", display.contentCenterX, display.contentCenterY*3/8, Arial, 60)
+    questionText = display.newText("Qu'est-ce que c'est \"coquille\nde tacos\" en anglais?", display.contentCenterX, display.contentCenterY*3/8, Arial, 60)
 
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("Taco Shell", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
