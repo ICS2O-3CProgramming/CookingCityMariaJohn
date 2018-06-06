@@ -133,7 +133,7 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("How do you spell cheese in french?", display.contentCenterX, display.contentCenterY*3/8, Arial, 50)
+    questionText = display.newText("How do you spell \"cheese\" in French?", display.contentCenterX, display.contentCenterY*3/8, Arial, 50)
 
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("Fromage", display.contentWidth*5/7, display.contentHeight*5.5/7, Arial, 75)

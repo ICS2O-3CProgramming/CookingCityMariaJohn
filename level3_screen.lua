@@ -1,4 +1,4 @@
--- level1_screen.lua
+ -- level1_screen.lua
 -- Created by: John N
 -- Date: Month Day, Year
 -- Description: This is the level 1 screen of the game.
