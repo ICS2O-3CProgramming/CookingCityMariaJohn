@@ -168,9 +168,12 @@ function L3WrongAnswer2()
     
     incorrectObject2.isVisible = true
     
-    if (points == 8) then
+    if (points == 9) then
         timer.performWithDelay(1000, YouWinTransition)
     
+    elseif (points == 8) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
     elseif (points == 7) then  
         timer.performWithDelay(1000, YouWinTransition)
 
@@ -178,22 +181,22 @@ function L3WrongAnswer2()
         timer.performWithDelay(1000, YouWinTransition)
 
     elseif (points == 5) then  
-        timer.performWithDelay(1000, YouWinTransition)
+        timer.performWithDelay(1000, YouLoseTransition)
 
     elseif (points == 4) then  
-        timer.performWithDelay(1000, YouWinTransition)
-
-    elseif (points == 3) then  
         timer.performWithDelay(1000, YouLoseTransition)
     
-    elseif (points == 2) then
+    elseif (points == 3) then
 
         timer.performWithDelay(200, YouLoseTransition)
+
+    elseif (points == 2) then  
+        timer.performWithDelay(1000, YouLoseTransition)
 
     elseif (points == 1) then  
         timer.performWithDelay(1000, YouLoseTransition)
     
-    elseif (points == 1) then
+    elseif (points == 0) then
 
         timer.performWithDelay(200, YouLoseTransition)
 
@@ -239,9 +242,12 @@ function L3RightAnswer2()
     -- show overlay with math question
     points = points + 1
     
-    if (points == 8) then
+    if (points == 9) then
         timer.performWithDelay(1000, YouWinTransition)
     
+    elseif (points == 8) then  
+        timer.performWithDelay(1000, YouWinTransition)
+
     elseif (points == 7) then  
         timer.performWithDelay(1000, YouWinTransition)
 
@@ -249,22 +255,22 @@ function L3RightAnswer2()
         timer.performWithDelay(1000, YouWinTransition)
 
     elseif (points == 5) then  
-        timer.performWithDelay(1000, YouWinTransition)
+        timer.performWithDelay(1000, YouLoseTransition)
 
     elseif (points == 4) then  
-        timer.performWithDelay(1000, YouWinTransition)
-
-    elseif (points == 3) then  
         timer.performWithDelay(1000, YouLoseTransition)
     
-    elseif (points == 2) then
+    elseif (points == 3) then
 
         timer.performWithDelay(200, YouLoseTransition)
+
+    elseif (points == 2) then  
+        timer.performWithDelay(1000, YouLoseTransition)
 
     elseif (points == 1) then  
         timer.performWithDelay(1000, YouLoseTransition)
     
-    elseif (points == 1) then
+    elseif (points == 0) then
 
         timer.performWithDelay(200, YouLoseTransition)
 
@@ -286,7 +292,7 @@ end
 -- Creating Transition to help Screen
 local function MixButton()
     -- show overlay with math question
-    if (correctfood == 5) then
+    if (correctfood == 6) then
 
         batter.isVisible = true
         -- make the beef visible over top of the cake
@@ -301,7 +307,7 @@ local function MixButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        composer.showOverlay( "L2question4", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question7", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject4.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -330,7 +336,7 @@ end
 -- Creating Transition to help Screen
 local function BakeButton()
     -- show overlay with math question
-    if (correctfood == 6) then
+    if (correctfood == 7) then
 
         cake.isVisible = true
         -- make the batter invisible
@@ -340,7 +346,7 @@ local function BakeButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        composer.showOverlay( "L2question4", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question8", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject4.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -369,7 +375,7 @@ end
 -- Creating Transition to help Screen
 local function EggButton()
     -- show overlay with math question
-    if (correctfood == 0) then
+    if (correctfood == 3) then
         -- make the beef packet invisible
         egg.isVisible = false
 
@@ -380,7 +386,7 @@ local function EggButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        composer.showOverlay( "L2question2", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question4", { isModal = true, effect = "fade", time = 100})
 
     else
         incorrectObject1.isVisible = true
@@ -411,7 +417,7 @@ end
 -- Creating Transition to help Screen
 local function IceingButton()
     -- show overlay with math question
-    if (correctfood == 7) then
+    if (correctfood == 8) then
         -- make the beef packet invisible
         cake.isVisible = false
 
@@ -422,7 +428,7 @@ local function IceingButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        composer.showOverlay( "L2question2", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question9", { isModal = true, effect = "fade", time = 100})
 
     else
         incorrectObject1.isVisible = true
@@ -466,7 +472,7 @@ local function FlourButton()
         -- adding to the score
         correctfood = correctfood  + 1 
         -- show overlay with math question
-        composer.showOverlay( "L2question1", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question2", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject1.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -509,7 +515,7 @@ local function SugarButton()
         correctfood = correctfood  + 1 
 
         -- show overlay with question
-        composer.showOverlay( "L2question3", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question3", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject3.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -539,7 +545,7 @@ end
 -- Creating Transition to help Screen
 local function VanillaButton()
     -- show overlay with math question
-    if (correctfood == 4) then
+    if (correctfood == 5) then
         -- make the beef packet invisible
         vanillaExtract.isVisible = false
 
@@ -552,7 +558,7 @@ local function VanillaButton()
         correctfood = correctfood  + 1 
 
         -- show overlay with question
-        composer.showOverlay( "L2question3", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question6", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject3.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -582,7 +588,7 @@ end
 -- Creating Transition to help Screen
 local function MilkButton()
     -- show overlay with math question
-    if (correctfood == 3) then
+    if (correctfood == 4) then
         -- make the beef packet invisible
         milkCarton.isVisible = false
 
@@ -595,7 +601,7 @@ local function MilkButton()
         correctfood = correctfood  + 1 
 
         -- show overlay with question
-        composer.showOverlay( "L2question3", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question4", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject3.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)

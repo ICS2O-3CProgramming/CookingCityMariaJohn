@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
--- Created by: John Ngundeng
+-- Created by: Allison
 -- Date: May 16, 2017
 -- Description: This is the level 1 screen of the game. the charater can be dragged to move
 --If character goes off a certain araea they go back to the start. When a user interactes
@@ -15,13 +15,13 @@
 -- Use Composer Libraries
 local composer = require( "composer" )
 local widget = require( "widget" )
-
+local physics = require( "physics")
 
 
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "howto_screen2"
+sceneName = "L3question9"
 
 -----------------------------------------------------------------------------------------
 
@@ -33,32 +33,25 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
 
 -- The local variables for this scene
-local resumeText
-local text1
-local text2
-local text3
-local text4
-local text5
-local text6
-local text7
-local text8
-local icedcake
-local Steps
+local questionText
 
+local answerText 
+local wrongAnswerText1
+local wrongAnswerText2
 
+local answerPosition = 1
 local bkg
 local cover
 
-
-local userAnswer
 local textTouched = false
+
 
 -----------------------------------------------------------------------------------------
 --LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
 --making transition to next scene
-local function BackToLevel1() 
+local function BackToLevel3() 
     composer.hideOverlay("crossFade", 400 )
   
     ResumeGame()
@@ -66,27 +59,56 @@ end
 
 -----------------------------------------------------------------------------------------
 --checking to see if the user pressed the right answer and bring them back to level 1
-local function TouchListenerResume(touch)
+local function TouchListenerAnswer(touch)
     
     if (touch.phase == "ended") then
 
-        BackToLevel1( )
+        L3RightAnswer( ) 
+        BackToLevel3( )
     
     end 
 end
 
 
+--checking to see if the user pressed the right answer and bring them back to level 1
+local function TouchListenerWrongAnswer(touch)
+    
+    if (touch.phase == "ended") then
+        
+        L3WrongAnswer( )  
+        BackToLevel3( )
+        
+        
+    end 
+end
+
+--checking to see if the user pressed the right answer and bring them back to level 1
+local function TouchListenerWrongAnswer2(touch)
+    
+    if (touch.phase == "ended") then
+
+        L3WrongAnswer( )
+        BackToLevel3( )
+        
+    end 
+end
 
 
 --adding the event listeners 
 local function AddTextListeners ( )
-    resumeText:addEventListener( "touch", TouchListenerResume )
+    answerText:addEventListener( "touch", TouchListenerAnswer )
+    wrongText1:addEventListener( "touch", TouchListenerWrongAnswer)
+    wrongText2:addEventListener( "touch", TouchListenerWrongAnswer2)
+
 end
 
 --removing the event listeners
 local function RemoveTextListeners()
-    resumeText:removeEventListener( "touch", TouchListenerResume )
+    answerText:removeEventListener( "touch", TouchListenerAnswer )
+    wrongText1:removeEventListener( "touch", TouchListenerWrongAnswer)
+    wrongText2:removeEventListener( "touch", TouchListenerWrongAnswer2)
 end
+
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -106,76 +128,27 @@ function scene:create( event )
 
     -----------------------------------------------------------------------------------------
     --making a cover rectangle to have the background fully bolcked where the question is
-    cover = display.newRoundedRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight*0.95, 50 )
+    cover = display.newRoundedRect(display.contentCenterX, display.contentCenterY, display.contentWidth*0.8, display.contentHeight*0.95, 50 )
     --setting its colour
-    cover:setFillColor(231/255, 166/255, 36/255)
+    cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    text1 = display.newText("1: Add butter.", display.contentCenterX/1.8, display.contentCenterY*3/5.5, Arial, 50) 
-    text1:setTextColor(0, 0, 0 )
+    questionText = display.newText("What is the Second step ", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
 
-    -- create the question text object
-    text2 = display.newText("2: Add flour.", display.contentCenterX/1.9, display.contentCenterY*3/4, Arial, 50) 
-    text2:setTextColor(0, 0, 0 )
-
-    -- create the question text object
-    text3 = display.newText("3: Add sugar.", display.contentCenterX/1.9, display.contentCenterY, Arial, 50) 
-    text3:setTextColor(0, 0, 0 )
-    
-    -- create the question text object
-    text4 = display.newText("4: Add egg.", display.contentCenterX/1.8, display.contentCenterY/3*3.7, Arial, 50) 
-    text4:setTextColor(0, 0, 0 )
-
-    -- create the question text object
-    text5 = display.newText("5: Add milk. ", display.contentCenterX*1.3, display.contentCenterY*3/5.5, Arial, 50) 
-    text5:setTextColor(0, 0, 0 )
-
-    -- create the question text object
-    text6 = display.newText("6: Add vanilla extract.", display.contentCenterX*1.5, display.contentCenterY*3/4, Arial, 50) 
-    text6:setTextColor(0, 0, 0 )
-
-    -- create the question text object
-    text7 = display.newText("7: Mix the bowl.", display.contentCenterX*1.37, display.contentCenterY, Arial, 50) 
-    text7:setTextColor(0, 0, 0 )
-    
-    -- create the question text object
-    text8 = display.newText("8: Bake the cake .", display.contentCenterX*1.42, display.contentCenterY/3*3.7, Arial, 50) 
-    text8:setTextColor(0, 0, 0 )
-
-    -- create the question text object
-    text9 = display.newText("9: Add icing.", display.contentCenterX, display.contentCenterY/3*4.3, Arial, 50) 
-    text9:setTextColor(0, 0, 0 )
-
-    -- create the question text object
-    Steps = display.newText("Steps.", display.contentCenterX, display.contentCenterY/3.5, Arial, 75) 
-    Steps:setTextColor(0, 0, 0 )
-    
-    -- create the question text object
-    resumeText = display.newText("Resume", display.contentCenterX, display.contentCenterY/3*5.5, Arial, 70)
-    resumeText:setTextColor(0, 0, 0 )
-
-    -- Insert the image
-    icedcake = display.newImageRect("L3images/cake.png", 350, 350 )
-    icedcake.x = display.contentCenterX
-    icedcake.y = display.contentCenterY*1.64
-    icedcake:scale (0.3, 0.3)
-
+    -- create the answer text object & wrong answer text objects
+    answerText = display.newText("Ajouter de Fromage.", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
+    wrongText1 = display.newText("Ajouter Carotte.", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 70)
+    wrongText2 = display.newText("Ajouter du chocolat.", display.contentWidth*3.5/7, display.contentHeight*3.5/7, Arial, 75)
+    -----------------------------------------------------------------------------------------
 
     -- insert all objects for this scene into the scene group
     sceneGroup:insert(bkg)
     sceneGroup:insert(cover)
-    sceneGroup:insert(resumeText)
-    sceneGroup:insert(text1)
-    sceneGroup:insert(text2)
-    sceneGroup:insert(text3)
-    sceneGroup:insert(text4)
-    sceneGroup:insert(text5)
-    sceneGroup:insert(text6)
-    sceneGroup:insert(text7)
-    sceneGroup:insert(text8)
-    sceneGroup:insert(text9)
-    sceneGroup:insert(Steps)
-    sceneGroup:insert(icedcake)
+    sceneGroup:insert(questionText)
+    sceneGroup:insert(answerText)
+    sceneGroup:insert(wrongText1)
+    sceneGroup:insert(wrongText2)
+
 
 
 end --function scene:create( event )

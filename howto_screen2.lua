@@ -37,6 +37,9 @@ local resumeText
 local text1
 local text2
 local text3
+local text4
+local taco
+local Steps
 
 
 local bkg
@@ -104,20 +107,34 @@ function scene:create( event )
     cover:setFillColor(231/255, 166/255, 36/255)
 
     -- create the question text object
-    text1 = display.newText("1: Add sauce to the pizza dough.", display.contentCenterX, display.contentCenterY*3/7, Arial, 45) 
+    text1 = display.newText("1: Add beef to the tacoshell. ", display.contentCenterX, display.contentCenterY*3/5.5, Arial, 50) 
     text1:setTextColor(0, 0, 0 )
 
     -- create the question text object
-    text2 = display.newText("2: Put the cheese on top of the sauce.", display.contentCenterX, display.contentCenterY*3/4, Arial, 45) 
+    text2 = display.newText("2: Add cheese.", display.contentCenterX, display.contentCenterY*3/4, Arial, 50) 
     text2:setTextColor(0, 0, 0 )
 
     -- create the question text object
-    text3 = display.newText("3: Add the topping.", display.contentCenterX, display.contentCenterY/7*8, Arial, 50) 
+    text3 = display.newText("3: Add lettuce.", display.contentCenterX, display.contentCenterY, Arial, 50) 
     text3:setTextColor(0, 0, 0 )
+    
+    -- create the question text object
+    text4 = display.newText("4: Add the salsa.", display.contentCenterX, display.contentCenterY/3*3.7, Arial, 50) 
+    text4:setTextColor(0, 0, 0 )
+
+    -- create the question text object
+    Steps = display.newText("Steps.", display.contentCenterX, display.contentCenterY/3.5, Arial, 75) 
+    Steps:setTextColor(0, 0, 0 )
     
     -- create the question text object
     resumeText = display.newText("Resume", display.contentCenterX, display.contentCenterY/3*5.5, Arial, 70)
 	resumeText:setTextColor(0, 0, 0 )
+
+    -- Insert the image
+    taco = display.newImageRect("L2images/salsa.png", 350, 350 )
+    taco.x = display.contentCenterX
+    taco.y = display.contentCenterY*1.5
+    taco:scale (0.3, 0.3)
 
 
     -- insert all objects for this scene into the scene group
@@ -127,6 +144,9 @@ function scene:create( event )
     sceneGroup:insert(text1)
     sceneGroup:insert(text2)
     sceneGroup:insert(text3)
+    sceneGroup:insert(text4)
+    sceneGroup:insert(Steps)
+    sceneGroup:insert(taco)
 
 
 end --function scene:create( event )
