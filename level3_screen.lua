@@ -638,7 +638,7 @@ local function ButterButton()
         correctfood = correctfood  + 1 
 
         -- show overlay with question
-        composer.showOverlay( "L2question3", { isModal = true, effect = "fade", time = 100})
+        composer.showOverlay( "L3question1", { isModal = true, effect = "fade", time = 100})
     else
         incorrectObject3.isVisible = true
         timer.performWithDelay(1000, HideIncorrect)
@@ -840,7 +840,7 @@ function scene:create( event )
     incorrectObject2:setTextColor(255/255, 255/255, 0/255)
     incorrectObject2.isVisible = false
 
-    incorrectObject3 = display.newText( "Thats not right!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
+    incorrectObject3 = display.newText( "That's not right!", display.contentCenterX, display.contentHeight/1.45, Georgia, 60)
     incorrectObject3:setTextColor(255/255, 255/255, 0/255)
     incorrectObject3.isVisible = false
 
