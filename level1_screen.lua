@@ -159,14 +159,18 @@ function WrongAnswer2()
     
     incorrectObject2.isVisible = true
     
-    if (points == 3) then
+    if (points == 4) then
         
         timer.performWithDelay(1000, YouWinTransition)
     
-    elseif (points == 2) then  
+    elseif (points == 3) then  
         timer.performWithDelay(1000, YouWinTransition)
 
     
+    elseif (points == 2) then
+
+        timer.performWithDelay(200, YouLoseTransition)
+
     elseif (points == 1) then
 
         timer.performWithDelay(200, YouLoseTransition)
