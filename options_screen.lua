@@ -39,6 +39,8 @@ local mainmenuText
 
 local muteButton
 local unmuteButton
+local bkgMusicChannel1
+local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
 
 local bkg
 local cover
@@ -156,8 +158,8 @@ function scene:create( event )
             y = display.contentHeight*6.6/8,
 
             -- Insert the images here
-            defaultFile = "Images/HelpButtonMaria.png",
-            overFile = "Images/HelpButtonMariaPressed.png",
+            defaultFile = "Images/mutebutton.png",
+            overFile = "Images/mutebuttonpressed.png",
 
 
 
@@ -173,8 +175,8 @@ function scene:create( event )
             y = display.contentHeight*6.6/8,
 
             -- Insert the images here
-            defaultFile = "Images/HelpButtonMaria.png",
-            overFile = "Images/HelpButtonMariaPressed.png",
+            defaultFile = "Images/unmutebutton.png",
+            overFile = "Images/unmutebuttonpressed.png",
 
 
 
