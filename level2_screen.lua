@@ -67,8 +67,8 @@ local hat1
 local hat2
 local hat3
 
-local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
-local bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
+local bkgMusic = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
+local bkgMusicChannel = audio.play( bkgMusic1, { channel=1, loops=-1 } )
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
