@@ -256,6 +256,7 @@ function scene:hide( event )
     -- Insert code here to "pause" the scene.
     -- Example: stop timers, stop animation, stop audio, etc.
     if ( phase == "will" ) then  
+        audio.stop(WhooshboomSoundsChannel)
 
     -----------------------------------------------------------------------------------------
 
@@ -263,7 +264,7 @@ function scene:hide( event )
     elseif ( phase == "did" ) then
         
         -- stop the Whooshboom sounds channel for this screen
-        audio.stop(WhooshboomSoundsChannel)
+    
     end
 
 end --function scene:hide( event )

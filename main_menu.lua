@@ -37,6 +37,8 @@ local bkg_image
 local playButton
 local creditButton
 local helpButton
+local muteButton
+local unmuteButton
 
 local bkgMusic = audio.loadStream( "Sounds/Lets_Go_2.mp3")
 local bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
@@ -58,6 +60,22 @@ end
 local function HelpScreenTransition( )
     composer.gotoScene( "help_screen", {effect = "fromBottom", time = 500})
 end    
+
+-- Creating Transition to help Screen
+function Mute( )
+     bkgMusicChannel = audio.stop()
+
+    muteButton.isVisible = false 
+    unmuteButton.isVisible = true
+end  
+
+-- Creating Transition to help Screen
+function Unmute( )
+    bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
+    muteButton.isVisible = true  
+    unmuteButton.isVisible = false
+
+end
 
 
 -- The function called when the screen doesn't exist
@@ -139,11 +157,49 @@ function scene:create( event )
             onRelease = HelpScreenTransition          
         } ) 
 
+    -- Creating help Button
+    muteButton = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentWidth/2,
+            y = display.contentHeight*6.6/8,
+
+            -- Insert the images here
+            defaultFile = "Images/HelpButtonMaria.png",
+            overFile = "Images/HelpButtonMariaPressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = Mute       
+        } )
+
+    -- Creating help Button
+    unmuteButton = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentWidth/2,
+            y = display.contentHeight*6.6/8,
+
+            -- Insert the images here
+            defaultFile = "Images/HelpButtonMaria.png",
+            overFile = "Images/HelpButtonMariaPressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = Unmute       
+        } ) 
+
+     unmuteButton.isVisible = false
 
 
         sceneGroup:insert( playButton )
         sceneGroup:insert( helpButton )
         sceneGroup:insert( creditButton )
+        sceneGroup:insert( muteButton )
+        sceneGroup:insert( unmuteButton )
+
 
 end 
 -- function scene:create( event )   
@@ -195,6 +251,7 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
+        
 
     -----------------------------------------------------------------------------------------
 
