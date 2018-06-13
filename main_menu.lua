@@ -41,7 +41,7 @@ local muteButton
 local unmuteButton
 
 local bkgMusic = audio.loadStream( "Sounds/Lets_Go_2.mp3")
-local bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
+local bkgMusicChannel 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ local function HelpScreenTransition( )
 end    
 
 -- Creating Transition to help Screen
-function Mute( )
+local function Mute( )
      bkgMusicChannel = audio.stop()
 
     muteButton.isVisible = false 
@@ -70,7 +70,7 @@ function Mute( )
 end  
 
 -- Creating Transition to help Screen
-function Unmute( )
+local function Unmute( )
     bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
     muteButton.isVisible = true  
     unmuteButton.isVisible = false
@@ -228,7 +228,8 @@ function scene:show( event )
     -- Called when the scene is now on screen.
     -- Insert code here to make the scene come alive.
     -- Example: play timers, begin animation, play audio, etc.
-    elseif ( phase == "did" ) then       
+    elseif ( phase == "did" ) then 
+    bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )      
         
     end
 end -- function scene:show( event )

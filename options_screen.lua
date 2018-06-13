@@ -37,6 +37,9 @@ local optionsText
 local resumeText
 local mainmenuText
 
+local muteButton
+local unmuteButton
+
 local bkg
 local cover
 
@@ -61,7 +64,21 @@ local function GoToMainMenu()
     composer.gotoScene( "main_menu", {effect = "fromBottom", time = 500})
 end 
 
+-- Creating Transition to help Screen
+function Mute( )
+     bkgMusicChannel1 = audio.stop()
 
+    muteButton.isVisible = false 
+    unmuteButton.isVisible = true
+end  
+
+-- Creating Transition to help Screen
+function Unmute( )
+    bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
+    muteButton.isVisible = true  
+    unmuteButton.isVisible = false
+
+end
 -----------------------------------------------------------------------------------------
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerResume(touch)
@@ -131,12 +148,50 @@ function scene:create( event )
     mainmenuText = display.newText("Main Menu", display.contentCenterX, display.contentCenterY*3/2.5, Arial, 50)
 	mainmenuText:setTextColor(0, 0, 0 )
 
+    -- Creating help Button
+    muteButton = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentWidth/2,
+            y = display.contentHeight*6.6/8,
+
+            -- Insert the images here
+            defaultFile = "Images/HelpButtonMaria.png",
+            overFile = "Images/HelpButtonMariaPressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = Mute       
+        } )
+
+    -- Creating help Button
+    unmuteButton = widget.newButton( 
+        {   
+            -- Set its position on the screen relative to the screen size
+            x = display.contentWidth/2,
+            y = display.contentHeight*6.6/8,
+
+            -- Insert the images here
+            defaultFile = "Images/HelpButtonMaria.png",
+            overFile = "Images/HelpButtonMariaPressed.png",
+
+
+
+            -- When the button is released, call the Level1 screen transition function
+            onRelease = Unmute       
+        } ) 
+
+     unmuteButton.isVisible = false
+
 
 
     -- insert all objects for this scene into the scene group
     sceneGroup:insert(bkg)
     sceneGroup:insert(cover)
     sceneGroup:insert(optionsText)
+    sceneGroup:insert(muteButton)
+    sceneGroup:insert(unmuteButton)
     sceneGroup:insert(resumeText)
     sceneGroup:insert(mainmenuText)
 

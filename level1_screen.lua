@@ -60,8 +60,8 @@ local hat1
 local hat2
 local hat3
 -- sound variables 
-local bkgMusi1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
-local bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
+local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
+local bkgMusicChannel 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ end
  
 -- transition to win screen 
 local function YouWinTransition()
-    composer.gotoScene( "you_Win" )
+    composer.gotoScene( "you_win" )
 end
 
 -- bringing the user back to level 1
@@ -891,6 +891,8 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
+        bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
+
         local function MoveLevel1Text(event)
 
             -- change the transparency of the text so that it fades out
@@ -901,6 +903,8 @@ function scene:show( event )
         Runtime:addEventListener("enterFrame", MoveLevel1Text)
 
         RestartLevel1()
+
+
     end
 
 end --function scene:show( event )
