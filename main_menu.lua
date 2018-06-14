@@ -61,6 +61,22 @@ local function HelpScreenTransition( )
     composer.gotoScene( "help_screen", {effect = "fromBottom", time = 500})
 end    
 
+-- Creating Transition to help Screen
+function Mute( )
+     bkgMusicChannel = audio.stop()
+
+    muteButton.isVisible = false 
+    unmuteButton.isVisible = true
+end  
+
+-- Creating Transition to help Screen
+function Unmute( )
+    bkgMusicChannel = audio.play( bkgMusic, { channel=1, loops=-1 } )
+    muteButton.isVisible = true  
+    unmuteButton.isVisible = false
+
+end
+
 
 -- The function called when the screen doesn't exist
 function scene:create( event )
@@ -134,7 +150,6 @@ function scene:create( event )
             -- Insert the images here
             defaultFile = "Images/HelpButtonMaria.png",
             overFile = "Images/HelpButtonMariaPressed.png",
-
 
 
             -- When the button is released, call the Level1 screen transition function

@@ -34,15 +34,23 @@ local cheese
 local vanillaExtract
 local lettuce
 local flourBag
+local flourbowl
 local sugarBag
 local butterBlock
 local egg
+local eggbowl
 local shreddedcheese
 local milk
+local milkCarton
+local eggbowl
 local vanilla
+local vanillaExtract
 local flour
+local flourbowl
 local sugar
+local sugarbowl
 local butter
+local butterbowl
 local eggYolkz
 local goal
 local tomato
@@ -782,37 +790,37 @@ function scene:create( event )
     -- Insert the image
     vanilla = display.newImageRect("L3images/vanillabowl.png", 350, 350 )
     vanilla.x = display.contentCenterX
-    vanilla.y = display.contentCenterY*1.4
+    vanilla.y = display.contentCenterY*1.2
     vanilla.isVisible = false
 
     -- Insert the image
-    eggYolk = display.newImageRect("L3images/egg.png", 350, 350 )
+    eggYolk = display.newImageRect("L3images/eggbowl.png", 350, 350 )
     eggYolk.x = display.contentCenterX
-    eggYolk.y = display.contentCenterY*1.4
+    eggYolk.y = display.contentCenterY*1.2
     eggYolk.isVisible = false
 
     -- Insert the image
-    butter = display.newImageRect("L3images/butter.png", 350, 350 )
+    butter = display.newImageRect("L3images/butterbowl.png", 350, 350 )
     butter.x = display.contentCenterX
-    butter.y = display.contentCenterY*1.4
+    butter.y = display.contentCenterY*1.2
     butter.isVisible = false
 
     -- Insert the image
-    sugar = display.newImageRect("L3images/sugarbag.png", 350, 350 )
+    sugar = display.newImageRect("L3images/sugarbowl.png", 350, 350 )
     sugar.x = display.contentCenterX
-    sugar.y = display.contentCenterY*1.4
+    sugar.y = display.contentCenterY*1.2
     sugar.isVisible = false
     
     -- Insert the image
-    flour = display.newImageRect("L3images/flourbag.png", 350, 350 )
+    flour = display.newImageRect("L3images/flourbowl.png", 350, 350 )
     flour.x = display.contentCenterX
-    flour.y = display.contentCenterY*1.4
+    flour.y = display.contentCenterY*1.2
     flour.isVisible = false
     
     -- Insert the image
-    milk = display.newImageRect("L3images/milkCarton.png", 350, 350 )
+    milk = display.newImageRect("L3images/milkbowl.png", 350, 350 )
     milk.x = display.contentCenterX
-    milk.y = display.contentCenterY*1.4
+    milk.y = display.contentCenterY*1.2
     milk.isVisible = false
     
 
@@ -1247,4 +1255,3 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
-
