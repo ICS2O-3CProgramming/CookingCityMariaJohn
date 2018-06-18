@@ -157,48 +157,10 @@ function scene:create( event )
             onRelease = HelpScreenTransition          
         } ) 
 
-    -- Creating help Button
-    muteButton = widget.newButton( 
-        {   
-            -- Set its position on the screen relative to the screen size
-            x = display.contentWidth/2,
-            y = display.contentHeight*6.6/8,
-
-            -- Insert the images here
-            defaultFile = "Images/HelpButtonMaria.png",
-            overFile = "Images/HelpButtonMariaPressed.png",
-
-
-
-            -- When the button is released, call the Level1 screen transition function
-            onRelease = Mute       
-        } )
-
-    -- Creating help Button
-    unmuteButton = widget.newButton( 
-        {   
-            -- Set its position on the screen relative to the screen size
-            x = display.contentWidth/2,
-            y = display.contentHeight*6.6/8,
-
-            -- Insert the images here
-            defaultFile = "Images/HelpButtonMaria.png",
-            overFile = "Images/HelpButtonMariaPressed.png",
-
-
-
-            -- When the button is released, call the Level1 screen transition function
-            onRelease = Unmute       
-        } ) 
-
-     unmuteButton.isVisible = false
 
         sceneGroup:insert( playButton )
         sceneGroup:insert( helpButton )
         sceneGroup:insert( creditButton )
-        sceneGroup:insert( muteButton )
-        sceneGroup:insert( unmuteButton )
-
 
 
 end 

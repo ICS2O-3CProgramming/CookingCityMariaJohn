@@ -60,13 +60,11 @@ local hat1
 local hat2
 local hat3
 -- sound variables 
-<<<<<<< HEAD
 local bkgMusi1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
 local bkgMusicChannel1 = audio.play( bkgMusic1, { channel=1, loops=-1 } )
-=======
 local bkgMusic1 = audio.loadStream( "Sounds/ArabianSalsa2.mp3")
 local bkgMusicChannel 
->>>>>>> a70036eecbbaf40d5e5a83d1f8df4b45e016feb5
+
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
