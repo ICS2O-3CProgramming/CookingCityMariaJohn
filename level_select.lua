@@ -240,11 +240,8 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
-<<<<<<< HEAD
         
-=======
         bkgMusicChannel1 = audio.stop()
->>>>>>> a70036eecbbaf40d5e5a83d1f8df4b45e016feb5
 
     -----------------------------------------------------------------------------------------
 

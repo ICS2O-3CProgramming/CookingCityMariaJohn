@@ -34,23 +34,17 @@ local cheese
 local vanillaExtract
 local lettuce
 local flourBag
-local flourbowl
 local sugarBag
 local butterBlock
 local egg
-local eggbowl
 local shreddedcheese
 local milk
 local milkCarton
-local eggbowl
 local vanilla
 local vanillaExtract
 local flour
-local flourbowl
 local sugar
-local sugarbowl
 local butter
-local butterbowl
 local eggYolkz
 local goal
 local tomato
@@ -1120,26 +1114,24 @@ function scene:create( event )
             onRelease = lettuceButton          
         } )
 
-    
-
-    -- Send the background image to the back layer so all other objects can be on top
-    bkg_image:toBack()
 
         -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image )
     sceneGroup:insert( bowl )
-    sceneGroup:insert( milkCarton) 
-    sceneGroup:insert( milk)
-    sceneGroup:insert( sugarBag)
-    sceneGroup:insert( sugar)
-    sceneGroup:insert( flour)
-    sceneGroup:insert( flourBag)
     sceneGroup:insert( butter)
     sceneGroup:insert( butterBlock)
+    sceneGroup:insert( flour)
+    sceneGroup:insert( flourBag)
+    sceneGroup:insert( sugarBag)
+    sceneGroup:insert( sugar)
     sceneGroup:insert( egg)
     sceneGroup:insert( eggYolk)
+    sceneGroup:insert( milkCarton) 
+    sceneGroup:insert( milk)
     sceneGroup:insert( vanilla)
     sceneGroup:insert( vanillaExtract)
+    sceneGroup:insert( mix )
+    sceneGroup:insert( bake )
     sceneGroup:insert( icing)
     sceneGroup:insert( lettuce )
     sceneGroup:insert( cheese )
@@ -1147,8 +1139,6 @@ function scene:create( event )
     sceneGroup:insert( Pause )
     sceneGroup:insert( level3text ) 
     sceneGroup:insert( HowTo )
-    sceneGroup:insert( mix )
-    sceneGroup:insert( bake )
     sceneGroup:insert( goal )
     sceneGroup:insert( hat1 )
     sceneGroup:insert( hat2 )

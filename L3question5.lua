@@ -133,12 +133,12 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("What is the Second step ", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
+    questionText = display.newText("Le gâteau est-il mélangé ou cuit en premier?", display.contentCenterX, display.contentCenterY*3/8, Arial, 60)
 
     -- create the answer text object & wrong answer text objects
-    answerText = display.newText("Ajouter de Fromage.", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
-    wrongText1 = display.newText("Ajouter Carotte.", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 70)
-    wrongText2 = display.newText("Ajouter du chocolat.", display.contentWidth*3.5/7, display.contentHeight*3.5/7, Arial, 75)
+    answerText = display.newText("Mixte", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
+    wrongText1 = display.newText("Servi", display.contentWidth*3.5/7, display.contentHeight*5.5/7, Arial, 70)
+    wrongText2 = display.newText("Cuit", display.contentWidth*3.5/7, display.contentHeight*3.5/7, Arial, 75)
     -----------------------------------------------------------------------------------------
 
     -- insert all objects for this scene into the scene group
