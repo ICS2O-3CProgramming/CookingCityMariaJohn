@@ -133,7 +133,7 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("Le gâteau est-il mélangé ou cuit en premier?", display.contentCenterX, display.contentCenterY*3/8, Arial, 60)
+    questionText = display.newText("Le gâteau est-il mélangé ou cuit en premier?", display.contentCenterX, display.contentCenterY*3/8, Arial, 55)
 
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("Mixte", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)

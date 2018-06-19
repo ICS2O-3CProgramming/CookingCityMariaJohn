@@ -133,7 +133,7 @@ function scene:create( event )
     cover:setFillColor(96/255, 96/255, 96/255)
 
     -- create the question text object
-    questionText = display.newText("Quelle nourriture est trouvée dans le gâteau", display.contentCenterX, display.contentCenterY*3/8, Arial, 75)
+    questionText = display.newText("Quelle nourriture est trouvée dans le gâteau", display.contentCenterX, display.contentCenterY*3/8, Arial, 65)
 
     -- create the answer text object & wrong answer text objects
     answerText = display.newText("Rocks", display.contentWidth*3.5/7, display.contentHeight*4.5/7, Arial, 70)
